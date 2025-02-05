@@ -1,3 +1,1 @@
 # myDegreeMap
-
-# hello there
