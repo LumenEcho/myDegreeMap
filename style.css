@@ -3,7 +3,7 @@
     
 }
 
-#wrapper {
+#selectorWrapper {
     display: flex;
 }
 #title_bar {
@@ -19,3 +19,8 @@
     flex-grow: 1;
     border: 1px solid black;
 }
+
+body{
+    margin:0;
+}
+

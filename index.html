@@ -6,31 +6,27 @@
 
     <script src="script.js"></script>
 
-    <div>
-        <img id = "title" src="/My Degree Map.png" width = 200px>
-    </div>
-    <div id = "wrapper">
-        <div id = "majorDropDown">
-            <label>Degree Selector</label>
-            <select>
-                
-                <option value = "">Select your major</option>
-                <option value = "CS">Computer Science</option>
-            </select>
-        </div>
-        <div id = "classSearch">
-            <search>
-                
-                <input type = "search" id = "degree"/>
-                <button type = "submit">Search</button>
-            </search>
-        </div>
-    </div>
-    
-    
-    
-
     <div id="title_bar">My Degree Map</div>
+    <div id = "selectorWrapper">
+        <div id = "degreeSelector">
+            <label for = "degreesChoice">Degree Selector</label>
+            <input list = "degrees" id="degreesChoice" name="degreesChoice"/>
+            <datalist id="degrees">
+                <option value = "Computer Science: No Concentration"></option>
+                <option value = "Computer Science: Data Science & Artificial Intelligence"></option>
+                <option value = "Computer Science: Cybersecurity"></option>
+                <option value = "Computer Science: High Performance Computing"></option>
+            </datalist>
+        </div>
+        <div id = "classSelector">
+            <label for = "classChoice">Class Selector</label>
+            <input list = "classes" id ="classChoice" name = "classChoice"/>
+            <datalist id = "classes">
+                <option value = "1310 Data Structures and Algorithms"></option>
+            </datalist>
+        </div>
+    </div>
+
     <div id="semesters_table">
         <div class="column">
             <h4>Transferred</h4>
