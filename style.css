@@ -1,0 +1,8 @@
+#title {
+    border: 10px solid gold;
+    
+}
+
+#wrapper {
+    display: flex;
+}
