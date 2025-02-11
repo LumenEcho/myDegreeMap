@@ -1,0 +1,25 @@
+body{
+    margin:0;
+}
+
+#selectorWrapper {
+    display: flex;
+}
+#title_bar {
+    background-color: purple;
+    color: gold;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 0.25em;
+}
+#semesters_table {
+    display: flex;
+    flex-direction: row;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border: 1px solid black;
+}
+
