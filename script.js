@@ -12,3 +12,6 @@ async function getClasses() {
     //testDiv.textContent = classData[0]["classId"]
 }
 
+//Remove lab classes from json file
+
+
