@@ -8,7 +8,7 @@
 
     <div id="title_bar">My Degree Map</div>
     <div id = "selectorWrapper">
-        <div id = "degreeSelector">
+        <div id = "degreeDatalist">
             <label for = "degreesChoice">Degree Selector</label>
             <input list = "degrees" id="degreesChoice" name="degreesChoice"/>
             <datalist id="degrees">
@@ -17,13 +17,16 @@
                 <option value = "Computer Science: Cybersecurity"></option>
                 <option value = "Computer Science: High Performance Computing"></option>
             </datalist>
+            <button id = "degreeButton" type = "submit">Search</button>
         </div>
-        <div id = "classSelector">
+        
+        <div id = "classDatalist">
             <label for = "classChoice">Class Selector</label>
             <input list = "classes" id ="classChoice" name = "classChoice"/>
             <datalist id = "classes">
                 <option value = "1310 Data Structures and Algorithms"></option>
             </datalist>
+            <button id = "classButton" type = "submit">Search</button>
         </div>
     </div>
 
