@@ -2,6 +2,8 @@ body{
     margin:0;
 }
 
+
+
 #selectorWrapper {
     display: flex;
     justify-content: center;
@@ -21,7 +23,7 @@ body{
     display: flex;
     min-height: 10px;
     border: 1px solid black;
-    height: fit-content;
+    max-height: fit-content;
 }
 
 
@@ -42,6 +44,7 @@ body{
     flex-direction: column;
     flex-grow: 1;
     border: 1px solid black;
+    text-align: center;
 }
 
 
