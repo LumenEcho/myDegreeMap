@@ -10,9 +10,9 @@ getDegrees();
 //Requests the json file
 //All operations with the json data must be called from within this function
 async function getClasses() {
-    const url="/classFile.json";
+    const url="/coursesFile.json";
     const response = await fetch(url).then((response) => response.json());
-    let classData = response["classes"];
+    let classData = response["courses"];
     console.log(classData);
     loadSearches(classData, classesList);
     //testDiv.textContent = classData[0]["classId"]
@@ -36,7 +36,7 @@ function loadSearches(data, searchBar) {
         }
         else if (searchBar == classesList) {
             classNameString = "";
-            classNameString = data[i]["classId"].concat(" ", data[i]["className"]);
+            classNameString = data[i]["code"].concat(" ", data[i]["name"]);
             newOption.value = classNameString;
         }
         
