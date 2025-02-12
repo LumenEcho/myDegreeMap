@@ -4,8 +4,13 @@ let classSelectionBox = document.getElementById("classChoice");
 let degreesList = document.getElementById("degrees");
 let classesList = document.getElementById("classes");
 
+let degreeSearchButton = document.getElementById("degreeButton");
+let classSearchButton = document.getElementById("classButton");
+
 getClasses();
 getDegrees();
+
+degreeSearchButton.addEventListener(click)
 
 //Requests the json file
 //All operations with the json data must be called from within this function
@@ -15,7 +20,6 @@ async function getClasses() {
     let classData = response["courses"];
     console.log(classData);
     loadSearches(classData, classesList);
-    //testDiv.textContent = classData[0]["classId"]
 }
 
 async function getDegrees() {
@@ -28,7 +32,7 @@ async function getDegrees() {
 
 
 function loadSearches(data, searchBar) {
-    for (i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         let newOption = document.createElement("option");
         searchBar.append(newOption);
         if (searchBar == degreesList) {
@@ -41,5 +45,9 @@ function loadSearches(data, searchBar) {
         }
         
     }
+}
+
+function createClassBox(classQuery) {
+
 }
 
