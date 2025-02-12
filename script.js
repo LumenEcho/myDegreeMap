@@ -10,7 +10,7 @@ let classSearchButton = document.getElementById("classButton");
 getClasses();
 getDegrees();
 
-degreeSearchButton.addEventListener(click)
+classSearchButton.addEventListener("click", createClassBox(classSelectionBox.value))
 
 //Requests the json file
 //All operations with the json data must be called from within this function
@@ -48,6 +48,11 @@ function loadSearches(data, searchBar) {
 }
 
 function createClassBox(classQuery) {
-
+    let classQueryCode = "";
+    classQueryCode = classQueryCode + (classQuery.substring(0, 8));
+    console.log(classQueryCode);
+    document.createElement("div");
+    console.log(classData);
+    
 }
 
