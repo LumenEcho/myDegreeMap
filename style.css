@@ -5,23 +5,26 @@ body{
 #selectorWrapper {
     display: flex;
     justify-content: center;
+    
 }
-#degreeDatalist {
+
+.selectorLabel{
+    font-size: 20px;
+    padding: 10px;
+}
+
+#degreeDatalist, #classDatalist {
     display: flex;
     justify-content: center;
     margin-right: 50px;
+    padding: 10px;
 }
 
-#classDatalist{
-    display: flex;
-    justify-content: center;
-    margin-left: 50px;
-}
 .row{
     display: flex;
     min-height: 10px;
     border: 1px solid black;
-    max-height: fit-content;
+    height: 90vh;
 }
 
 
@@ -36,6 +39,9 @@ body{
     display: flex;
     flex-direction: row;
     overflow: scroll;
+    height: 90vh;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .column {
     display: flex;
