@@ -57,14 +57,43 @@ function createClassBox(classQuery) {
     let classQueryCode = "";
     classQueryCode = classQueryCode + (classQuery.substring(0, 8));
     console.log(classQueryCode);
+
     let classBox = document.createElement("div");
     classBox.className = "box";
     semesterOneRow.append(classBox);
     classBox.style.backgroundColor = "gray";
 
+    let boxInnerWrap = createElement("div");
+    classBox.append(boxInnerWrap);
+    topWrapperDiv.className = "boxInnerWrap";
+
+    let courseCodeDiv = document.createElement("div");
+    courseCodeDiv.className = "courseCodeDiv";
+    boxInnerWrap.append(courseCodeDiv);
+
+    let checkBoxButtonDiv = document.createElement("div");
+    checkBoxButtonDiv.className = "checkBoxButtonDiv";
+    boxInnerWrap.append(checkBoxButtonDiv);
+
+    let courseCheckbox = document.createElement("input");
+    courseCheckbox.type = "checkbox";
+    checkBoxButtonDiv.className = "courseCheckbox";
+    checkBoxButtonDiv.append(courseCheckbox);
+
+    let nameDiv = document.createElement("div");
+    nameDiv.className = "nameDiv";
+    classBox.append(nameDiv);
+
+    let creditDiv = document.createElement("div");
+    creditDiv.className = "creditDiv";
+    classBox.append(creditDiv);
+
+    let moreInfoDiv = document.createElement("div");
+    moreInfoDiv.className = "moreInfoDiv";
+    classBox.append(moreInfoDiv);
 }
 
 function createDegreeTemplate(degreeQuery) {
-    
+
 }
 
