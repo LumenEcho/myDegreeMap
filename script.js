@@ -63,9 +63,9 @@ function createClassBox(classQuery) {
     semesterOneRow.append(classBox);
     classBox.style.backgroundColor = "gray";
 
-    let boxInnerWrap = createElement("div");
+    let boxInnerWrap = document.createElement("div");
     classBox.append(boxInnerWrap);
-    topWrapperDiv.className = "boxInnerWrap";
+    boxInnerWrap.className = "boxInnerWrap";
 
     let courseCodeDiv = document.createElement("div");
     courseCodeDiv.className = "courseCodeDiv";
