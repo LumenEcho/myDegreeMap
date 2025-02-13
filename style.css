@@ -59,3 +59,31 @@ body{
     width: 100%;
     height: 20%;
 }
+
+.boxInnerWrap{
+    display:flex;
+}
+
+.courseCodeDiv{
+
+}
+
+.checkBoxButtonDiv{
+    display: flex;
+}
+
+.classCheckBox{
+    
+}
+
+.nameDiv{
+
+}
+
+.creditDiv{
+
+}
+
+.moreInfoDiv{
+
+}
