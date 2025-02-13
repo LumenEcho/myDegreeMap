@@ -3,21 +3,27 @@ let degreeSelectionBox = document.getElementById("degreesChoice");
 let classSelectionBox = document.getElementById("classChoice");
 let degreesList = document.getElementById("degrees");
 let classesList = document.getElementById("classes");
+let semesterOneRow = document.getElementsByClassName("row")[1];
 
 let degreeSearchButton = document.getElementById("degreeButton");
 let classSearchButton = document.getElementById("classButton");
 
+let classData;
+let degreeData;
+
+classSearchButton.addEventListener("click", () => createClassBox(classSelectionBox.value));
+degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
+
+
 getClasses();
 getDegrees();
-
-classSearchButton.addEventListener("click", createClassBox(classSelectionBox.value))
 
 //Requests the json file
 //All operations with the json data must be called from within this function
 async function getClasses() {
     const url="/coursesFile.json";
     const response = await fetch(url).then((response) => response.json());
-    let classData = response["courses"];
+    classData = response["courses"];
     console.log(classData);
     loadSearches(classData, classesList);
 }
@@ -25,7 +31,7 @@ async function getClasses() {
 async function getDegrees() {
     const url = "/degrees.json";
     const response = await fetch(url).then((response) => response.json());
-    let degreeData = response["degrees"];
+    degreeData = response["degrees"];
     console.log(degreeData);
     loadSearches(degreeData, degreesList);
 }
@@ -51,8 +57,14 @@ function createClassBox(classQuery) {
     let classQueryCode = "";
     classQueryCode = classQueryCode + (classQuery.substring(0, 8));
     console.log(classQueryCode);
-    document.createElement("div");
-    console.log(classData);
+    let classBox = document.createElement("div");
+    classBox.className = "box";
+    semesterOneRow.append(classBox);
+    classBox.style.backgroundColor = "gray";
+
+}
+
+function createDegreeTemplate(degreeQuery) {
     
 }
 
