@@ -55,9 +55,25 @@ function loadSearches(data, searchBar) {
 
 function createClassBox(classQuery) {
     let classQueryCode = "";
+    let classDataEntry;
+    let foundClass = false;
     classQueryCode = classQueryCode + (classQuery.substring(0, 8));
     console.log(classQueryCode);
 
+    
+
+    for (let i = 0; i < classData.length(); i++) {
+        if (classData[i].code == classQueryCode) {
+            classDataEntry = classData[i];
+            foundClass = true;
+            break;
+        }
+    }
+
+    if (foundClass == false) {
+        alert("Please enter a valid class. Selecting one from the the provided list is recommended");
+        return 0;
+    }
     //Overall class box
     let classBox = document.createElement("div");
     classBox.className = "box";
