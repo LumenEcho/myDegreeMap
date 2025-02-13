@@ -58,36 +58,43 @@ function createClassBox(classQuery) {
     classQueryCode = classQueryCode + (classQuery.substring(0, 8));
     console.log(classQueryCode);
 
+    //Overall class box
     let classBox = document.createElement("div");
     classBox.className = "box";
     semesterOneRow.append(classBox);
-    classBox.style.backgroundColor = "gray";
 
+    //Top row of the box
     let boxInnerWrap = document.createElement("div");
     classBox.append(boxInnerWrap);
     boxInnerWrap.className = "boxInnerWrap";
 
+    //Class code in top left of box
     let courseCodeDiv = document.createElement("div");
     courseCodeDiv.className = "courseCodeDiv";
     boxInnerWrap.append(courseCodeDiv);
 
+    //Checkbox container div in top right of box
     let checkBoxButtonDiv = document.createElement("div");
     checkBoxButtonDiv.className = "checkBoxButtonDiv";
     boxInnerWrap.append(checkBoxButtonDiv);
 
+    //Actual checkbox in top right corner
     let courseCheckbox = document.createElement("input");
     courseCheckbox.type = "checkbox";
     checkBoxButtonDiv.className = "courseCheckbox";
     checkBoxButtonDiv.append(courseCheckbox);
 
+    //Name of class in 2nd row
     let nameDiv = document.createElement("div");
     nameDiv.className = "nameDiv";
     classBox.append(nameDiv);
 
+    //Amount of credits in 3rd row
     let creditDiv = document.createElement("div");
     creditDiv.className = "creditDiv";
     classBox.append(creditDiv);
 
+    //More info button in 4th/bottom row
     let moreInfoDiv = document.createElement("div");
     moreInfoDiv.className = "moreInfoDiv";
     classBox.append(moreInfoDiv);
