@@ -57,12 +57,13 @@ function createClassBox(classQuery) {
     let classQueryCode = "";
     let classDataEntry;
     let foundClass = false;
+    //Add allowing of class codes and ids with less than 8 character (csc1310)
     classQueryCode = classQueryCode + (classQuery.substring(0, 8));
     console.log(classQueryCode);
 
     
 
-    for (let i = 0; i < classData.length(); i++) {
+    for (let i = 0; i < classData.length; i++) {
         if (classData[i].code == classQueryCode) {
             classDataEntry = classData[i];
             foundClass = true;
@@ -78,6 +79,7 @@ function createClassBox(classQuery) {
     let classBox = document.createElement("div");
     classBox.className = "box";
     semesterOneRow.append(classBox);
+//  classBox.style.height = "200px";
 
     //Top row of the box
     let boxInnerWrap = document.createElement("div");
