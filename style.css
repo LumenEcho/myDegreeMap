@@ -1,12 +1,14 @@
 body{
     margin:0;
     font-family: sans-serif;
+    overflow:hidden;
 }
 
 #selectorWrapper {
     display: flex;
     justify-content: center;
     background-color: lightgoldenrodyellow;
+    overflow-x: auto;
 }
 
 .selectorLabel{
@@ -32,7 +34,7 @@ h4{
     border-bottom: 1px solid black;
     height: 90vh;
     flex-direction: column;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 
@@ -47,7 +49,7 @@ h4{
     background-color: lightgoldenrodyellow;
     display: flex;
     height: 90vh;
-
+    overflow-x: scroll;
 }
 .semesterTop{
     height: 10em;
@@ -72,7 +74,7 @@ h4{
     border-radius: 1em;
     border: 1px solid #610e81;
     font-size: .8em;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .boxInnerWrap{
