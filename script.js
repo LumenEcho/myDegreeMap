@@ -11,6 +11,7 @@ let classSearchButton = document.getElementById("classButton");
 
 let classData;
 let degreeData;
+let classBoxIdCounter = 0;
 
 classSearchButton.addEventListener("click", () => createClassBox(classSelectionBox.value));
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
@@ -21,8 +22,8 @@ for (let i = 0; i < tableColumns.length; i++) {
     });
     tableColumns[i].addEventListener("drop", (dragBox) => {
         dragBox.preventDefault();
-        const newLocation = dragBox.dataTransfer.getData("application/my-app");
-        dragBox.target.appendChild(document.getElementById(newLocation));
+        const data = dragBox.dataTransfer.getData("text");
+        dragBox.target.appendChild(document.getElementById(data));
     });
 }
 
@@ -31,7 +32,6 @@ getClasses();
 getDegrees();
 
 //Requests the json file
-//All operations with the json data must be called from within this function
 async function getClasses() {
     const url="/coursesFile.json";
     const response = await fetch(url).then((response) => response.json());
@@ -73,8 +73,6 @@ function createClassBox(classQuery) {
     classQueryCode = classQueryCode + (classQuery.substring(0, 8));
     console.log(classQueryCode);
 
-    
-
     for (let i = 0; i < classData.length; i++) {
         if (classData[i].code == classQueryCode) {
             classDataEntry = classData[i];
@@ -90,6 +88,8 @@ function createClassBox(classQuery) {
     //Overall class box
     let classBox = document.createElement("div");
     classBox.className = "box";
+    classBox.id = "classbox" + classBoxIdCounter;
+    classBoxIdCounter += 1;
     semesterOneRow.append(classBox);
 
     //Top row of the box
@@ -99,8 +99,10 @@ function createClassBox(classQuery) {
     classBox.draggable = true;
     // Event listener for dragging the box
     classBox.addEventListener("dragstart", (dragBox) => {
-        console.log("This dragged");
+        dragBox.dataTransfer.dropEffect = "move"
+        dragBox.dataTransfer.setData("text", dragBox.target.id);
         dragBox.dataTransfer.effectAllowed = "move";
+        console.log(dragBox);
     });
 
     //Class code in top left of box
