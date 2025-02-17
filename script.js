@@ -36,7 +36,6 @@ async function getClasses() {
     const url="/coursesFile.json";
     const response = await fetch(url).then((response) => response.json());
     classData = response["courses"];
-    console.log(classData);
     loadSearches(classData, classesList);
 }
 
@@ -44,7 +43,6 @@ async function getDegrees() {
     const url = "/degrees.json";
     const response = await fetch(url).then((response) => response.json());
     degreeData = response["degrees"];
-    console.log(degreeData);
     loadSearches(degreeData, degreesList);
 }
 
@@ -69,9 +67,14 @@ function createClassBox(classQuery) {
     let classQueryCode = "";
     let classDataEntry;
     let foundClass = false;
-    //Add allowing of class codes and ids with less than 8 character (csc1310)
-    classQueryCode = classQueryCode + (classQuery.substring(0, 8));
-    console.log(classQueryCode);
+    let classQueryStopIndex = 0;
+    for (let j = 0; j < classQuery.length; j++) {
+        if (classQuery[j] === ' ') {
+            classQueryStopIndex = j;
+            break;
+        }
+    }
+    classQueryCode = classQueryCode + (classQuery.substring(0, classQueryStopIndex));
 
     for (let i = 0; i < classData.length; i++) {
         if (classData[i].code == classQueryCode) {
@@ -81,7 +84,7 @@ function createClassBox(classQuery) {
         }
     }
 
-    if (foundClass == false) {
+    if (foundClass === false) {
         alert("Please enter a valid class. Selecting one from the the provided list is recommended");
         return 0;
     }
