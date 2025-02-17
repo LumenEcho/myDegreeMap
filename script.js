@@ -13,7 +13,7 @@ let classData;
 let degreeData;
 let classBoxIdCounter = 0;
 
-classSearchButton.addEventListener("click", () => createClassBox(classSelectionBox.value));
+classSearchButton.addEventListener("click", () => createClassBox(classSelectionBox.value, 1));
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
 for (let i = 0; i < tableColumns.length; i++) {
     tableColumns[i].addEventListener("dragover", (dragBox) => {
@@ -63,7 +63,7 @@ function loadSearches(data, searchBar) {
     }
 }
 
-function createClassBox(classQuery) {
+function createClassBox(classQuery, semester) {
     let classQueryCode = "";
     let classDataEntry;
     let foundClass = false;
@@ -93,7 +93,8 @@ function createClassBox(classQuery) {
     classBox.className = "box";
     classBox.id = "classbox" + classBoxIdCounter;
     classBoxIdCounter += 1;
-    semesterOneRow.append(classBox);
+    tableColumns[semester].append(classBox);
+    //semesterOneRow.append(classBox);
 
     //Top row of the box
     let boxInnerWrap = document.createElement("div");
@@ -145,6 +146,6 @@ function createClassBox(classQuery) {
 }
 
 function createDegreeTemplate(degreeQuery) {
-
+    
 }
 
