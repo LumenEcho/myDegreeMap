@@ -17,13 +17,15 @@ classSearchButton.addEventListener("click", () => createClassBox(classSelectionB
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
 for (let i = 0; i < tableColumns.length; i++) {
     tableColumns[i].addEventListener("dragover", (dragBox) => {
+        console.log(dragBox);
         dragBox.preventDefault();
         dragBox.dataTransfer.dropEffect = "move";
     });
     tableColumns[i].addEventListener("drop", (dragBox) => {
+        console.log(dragBox);
         dragBox.preventDefault();
         const data = dragBox.dataTransfer.getData("text");
-        dragBox.target.appendChild(document.getElementById(data));
+        tableColumns[i].appendChild(document.getElementById(data));
     });
 }
 
