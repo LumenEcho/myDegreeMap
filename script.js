@@ -98,8 +98,8 @@ function createClassBox(classQuery, semester) {
 
     //Top row of the box
     let boxLeftWrap = document.createElement("div");
-    classBox.append(boxInnerWrap);
-    boxLeftWrap.className = "boxInnerWrap";
+    classBox.append(boxLeftWrap);
+    boxLeftWrap.className = "boxLeftWrap";
     classBox.draggable = true;
     // Event listener for dragging the box
     classBox.addEventListener("dragstart", (dragBox) => {
