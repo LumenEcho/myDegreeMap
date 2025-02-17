@@ -60,14 +60,17 @@ h4{
     flex-grow: 1;
     border: 1px solid black;
     text-align: center;
-    
+    justify-content: stretch;
 }
 
+/*Below are all of the style changes for the .box class 
+    and its inner-divs that are created using JavaScript
+*/
 
 .box{
     background-color: rgb(231, 210, 250);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     min-height:20%;
     margin-bottom: 1em;
@@ -77,30 +80,20 @@ h4{
     overflow-y: auto;
 }
 
-.boxInnerWrap{
+.boxLeftWrap{ /*changed from .boxInnerWrap to .boxLeftWrap */
     display:flex;
-    height: 25%;
-    align-items: center;
+    flex-direction: column;
+    flex-grow: 3;
 }
 
 .courseCodeDiv{
-    flex-grow: 2;
-    left: 6%;
-    position: relative;
-    
-}
-
-.checkBoxButtonDiv{
-    display: flex;
-}
-
-.classCheckBox{
-
+    height: 25%;
 }
 
 .nameDiv{
-    height: 25%;
-
+    min-height: 40%;
+    text-align: center;
+    height:fit-content;
 }
 
 .creditDiv{
@@ -111,4 +104,13 @@ h4{
     height: 25%;
 }
 
-/* Please fix the checkbox "hitbox". The newly sized div covers most of it. Maybe do another row flexbox on the outside that has everything except the checkbox in one column and then center off that?*/
+.boxRightWrap{
+    /*Needs to the right of .boxleftWrap*/
+    /*Changed from .classCheckBox to .boxRightWrap*/
+    display: flex;
+    flex-direction: column;
+}
+
+.checkBoxButtonDiv{
+    display: flex;
+}
