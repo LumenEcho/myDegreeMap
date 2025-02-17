@@ -5,6 +5,7 @@ let degreesList = document.getElementById("degrees");
 let classesList = document.getElementById("classes");
 let tableColumns = document.getElementsByClassName("row");
 let semesterOneRow = document.getElementsByClassName("row")[1];
+let semesterTops = document.getElementsByClassName("semesterTop");
 
 let degreeSearchButton = document.getElementById("degreeButton");
 let classSearchButton = document.getElementById("classButton");
@@ -24,12 +25,17 @@ for (let i = 0; i < tableColumns.length; i++) {
         dragBox.preventDefault();
         const data = dragBox.dataTransfer.getData("text");
         tableColumns[i].appendChild(document.getElementById(data));
+        updateCreditsTotal();
     });
 }
 
 
 getClasses();
 getDegrees();
+
+for (let j = 0; j < semesterTops.length; j++) {
+    semesterTops[j].children[1].textContent = "Credits: 0";
+}
 
 //Requests the json file
 async function getClasses() {
@@ -90,6 +96,7 @@ function createClassBox(classQuery, semester) {
     }
     //Overall class box
     let classBox = document.createElement("div");
+    classBox.completedClass = false;
     classBox.className = "box";
     classBox.id = "classbox" + classBoxIdCounter;
     classBoxIdCounter += 1;
@@ -103,6 +110,7 @@ function createClassBox(classQuery, semester) {
     classBox.draggable = true;
     // Event listener for dragging the box
     classBox.addEventListener("dragstart", (dragBox) => {
+        console.log(dragBox);
         dragBox.dataTransfer.dropEffect = "move"
         dragBox.dataTransfer.setData("text", dragBox.target.id);
         dragBox.dataTransfer.effectAllowed = "move";
@@ -149,6 +157,8 @@ function createClassBox(classQuery, semester) {
     boxLeftWrap.append(moreInfoDiv);
     moreInfoDiv.textContent = "More information >";
     moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
+
+    updateCreditsTotal();
 }
 
 function createDegreeTemplate(degreeQuery) {
@@ -156,11 +166,43 @@ function createDegreeTemplate(degreeQuery) {
 }
 
 function isCourseCompleted(checkbox, classBox) {
-    console.log(classBox);
-    if (checkbox.check === true) {
-        classBox.style.backgroundColor = "#038d33";
+    if (checkbox.checked === true) {
+       classBox.style.backgroundColor = "#48D607";
+       classBox.completedClass = true;
     }
     else {
         classBox.style.backgroundColor = "#e7d2fa";
+        classBox.completedClass = false;
+    }
+    console.log(classBox.completedClass);
+}
+
+function updateCreditsTotal() {
+    /*let totalCredits = 0;
+    for (let i = 0; i < tableColumns[semester].childElementCount; i++) {
+        for (let j = 0; j < classData.length-1; j++) {
+            if (tableColumns[semester].children[i].children[0].children[0].textContent === classData[j]["code"]) {
+                totalCredits += classData[j]["credits"];
+                break;
+            }
+        }
+    }
+    semesterTops[semester].children[1].textContent = `Credits: ${totalCredits}`;*/
+    let semesterCredits = 0;
+    for (let i = 0; i < tableColumns.length; i++) {
+        console.log("We got to this loop");
+        semesterCredits = 0;
+        for (let j = 0; j < tableColumns[i].children.length; j++) {
+            console.log("We got here");
+            for (let m = 0; m < classData.length; m++) {
+                console.log("We've hit m loop")
+                if (tableColumns[i].children[0].children[0].children[0].textContent === classData[m]["code"]) {
+                    console.log(semesterCredits);
+                    semesterCredits += classData[m]["credits"];
+                    break;
+                }
+            }
+        }
+        semesterTops[i].children[1].textContent = `Credits: ${semesterCredits}`;
     }
 }
