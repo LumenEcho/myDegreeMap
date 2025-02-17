@@ -110,3 +110,5 @@ h4{
 .moreInfoDiv{
     height: 25%;
 }
+
+/* Please fix the checkbox "hitbox". The newly sized div covers most of it. Maybe do another row flexbox on the outside that has everything except the checkbox in one column and then center off that?*/
