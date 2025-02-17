@@ -134,19 +134,19 @@ function createClassBox(classQuery, semester) {
     //Name of class in 2nd row
     let nameDiv = document.createElement("div");
     nameDiv.className = "nameDiv";
-    boxRightWrap.append(nameDiv);
+    boxLeftWrap.append(nameDiv);
     nameDiv.textContent = classDataEntry["name"];
 
     //Amount of credits in 3rd row
     let creditDiv = document.createElement("div");
     creditDiv.className = "creditDiv";
-    boxRightWrap.append(creditDiv);
+    boxLeftWrap.append(creditDiv);
     creditDiv.textContent = `Credits: ${classDataEntry["credits"]}`;
 
     //More info button in 4th/bottom row
     let moreInfoDiv = document.createElement("div");
     moreInfoDiv.className = "moreInfoDiv";
-    boxRightWrap.append(moreInfoDiv);
+    boxLeftWrap.append(moreInfoDiv);
     moreInfoDiv.textContent = "More information >";
     moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
 }
