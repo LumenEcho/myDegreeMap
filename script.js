@@ -17,12 +17,10 @@ classSearchButton.addEventListener("click", () => createClassBox(classSelectionB
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
 for (let i = 0; i < tableColumns.length; i++) {
     tableColumns[i].addEventListener("dragover", (dragBox) => {
-        console.log(dragBox);
         dragBox.preventDefault();
         dragBox.dataTransfer.dropEffect = "move";
     });
     tableColumns[i].addEventListener("drop", (dragBox) => {
-        console.log(dragBox);
         dragBox.preventDefault();
         const data = dragBox.dataTransfer.getData("text");
         tableColumns[i].appendChild(document.getElementById(data));
@@ -104,7 +102,6 @@ function createClassBox(classQuery) {
         dragBox.dataTransfer.dropEffect = "move"
         dragBox.dataTransfer.setData("text", dragBox.target.id);
         dragBox.dataTransfer.effectAllowed = "move";
-        console.log(dragBox);
     });
 
     //Class code in top left of box
