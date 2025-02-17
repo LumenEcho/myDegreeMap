@@ -97,9 +97,9 @@ function createClassBox(classQuery, semester) {
     //semesterOneRow.append(classBox);
 
     //Top row of the box
-    let boxInnerWrap = document.createElement("div");
+    let boxLeftWrap = document.createElement("div");
     classBox.append(boxInnerWrap);
-    boxInnerWrap.className = "boxInnerWrap";
+    boxLeftWrap.className = "boxInnerWrap";
     classBox.draggable = true;
     // Event listener for dragging the box
     classBox.addEventListener("dragstart", (dragBox) => {
@@ -108,22 +108,28 @@ function createClassBox(classQuery, semester) {
         dragBox.dataTransfer.effectAllowed = "move";
     });
 
+    //Right column in box
+    let boxRightWrap = document.createElement("div");
+    classBox.append(boxRightWrap);
+    boxRightWrap.className = "boxRightWrap";
+
     //Class code in top left of box
     let courseCodeDiv = document.createElement("div");
     courseCodeDiv.className = "courseCodeDiv";
-    boxInnerWrap.append(courseCodeDiv);
+    boxLeftWrap.append(courseCodeDiv);
     courseCodeDiv.textContent = classDataEntry["code"];
 
     //Checkbox container div in top right of box
     let checkBoxButtonDiv = document.createElement("div");
     checkBoxButtonDiv.className = "checkBoxButtonDiv";
-    boxInnerWrap.append(checkBoxButtonDiv);
+    boxRightWrap.append(checkBoxButtonDiv);
 
     //Actual checkbox in top right corner
     let courseCheckbox = document.createElement("input");
     courseCheckbox.type = "checkbox";
     checkBoxButtonDiv.className = "courseCheckbox";
     checkBoxButtonDiv.append(courseCheckbox);
+    courseCheckbox.addEventListener("click", () => isCourseCompleted(courseCheckbox, classBox));
 
     //Name of class in 2nd row
     let nameDiv = document.createElement("div");
@@ -149,3 +155,12 @@ function createDegreeTemplate(degreeQuery) {
     
 }
 
+function isCourseCompleted(checkbox, classBox) {
+    console.log(classBox);
+    if (checkbox.check === true) {
+        classBox.style.backgroundColor = "#038d33";
+    }
+    else {
+        classBox.style.backgroundColor = "#e7d2fa";
+    }
+}
