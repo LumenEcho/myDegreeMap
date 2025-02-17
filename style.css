@@ -35,6 +35,8 @@ h4{
     height: 90vh;
     flex-direction: column;
     overflow-y: auto;
+    max-width: 11.111111111111111111111vw;
+    min-width: 11.111111111111111111111vw;
 }
 
 
@@ -61,6 +63,8 @@ h4{
     border: 1px solid black;
     text-align: center;
     justify-content: stretch;
+    max-width: (100/9)vw;
+    min-width: 11.111111111111111111111vw;
 }
 
 /*Below are all of the style changes for the .box class 
@@ -76,8 +80,8 @@ h4{
     margin-bottom: 1em;
     border-radius: 1em;
     border: 1px solid #610e81;
-    font-size: .8em;
-    overflow-y: auto;
+    font-size: 70%;
+    
 }
 
 .boxLeftWrap{ /*changed from .boxInnerWrap to .boxLeftWrap */
