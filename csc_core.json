@@ -1,0 +1,177 @@
+{
+    "classes": [
+        {
+            "classCode": "ENGL1010",
+            "semester": 1
+        },
+        {
+            "classCode": "MATH1910",
+            "semester": 1
+        },
+        {
+            "classCode": "CSC1020",
+            "semester": 1
+        },
+        {
+            "classCode": "CSC1300",
+            "semester": 1
+        },
+        {
+            "classCode": "HIST2010",
+            "semester": 1
+        },
+        {
+            "classCode": "CSC1310",
+            "semester": 2
+        },
+        {
+            "classCode": "MATH1920",
+            "semester": 2
+        },
+        {
+            "classCode": "ENGL1020",
+            "semester": 2
+        },
+        {
+            "classCode": "HIST2020",
+            "semester": 2
+        },
+        {
+            "classCode": "options",
+            "semester": 2,
+            "options": social/behavioral science FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "CSC2310",
+            "semester": 3
+        },
+        {
+            "classCode": "CSC2510",
+            "semester": 3
+        },
+        {
+            "classCode": "MATH2010",
+            "semester": 3
+        },
+        {
+            "classCode": "options",
+            "semester": 3,
+            "options": eng lit FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "options",
+            "semester": 3,
+            "options": science FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "CSC2400",
+            "semester": 4
+        },
+        {
+            "classCode": "CSC2700",
+            "semester": 4
+        },
+        {
+            "classCode": "options",
+            "semester": 4,
+            "options": lower csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "options",
+            "semester": 4,
+            "options": [
+                "COMM2025",
+                "PC2500"
+            ]
+        },
+        {
+            "classCode": "options",
+            "semester": 4,
+            "options": science FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "CSC3300",
+            "semester": 5
+        },
+        {
+            "classCode": "CSC3410",
+            "semester": 5
+        },
+        {
+            "classCode": "CSC3710",
+            "semester": 5
+        },
+        {
+            "classCode": "options",
+            "semester": 5,
+            "options": [
+                "MATH3070",
+                "MATH3470"
+            ]
+        },
+        {
+            "classCode": "options",
+            "semester": 5,
+            "options": humanities/fine arts FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "CSC3040",
+            "semester": 6
+        },
+        {
+            "classCode": "CSC4320",
+            "semester": 6
+        },
+        {
+            "classCode": "options",
+            "semester": 6,
+            "options": upper csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "options",
+            "semester": 6,
+            "options": lower csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "options",
+            "semester": 6,
+            "options": humanities/fine arts FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "CSC4100",
+            "semester": 7
+        },
+        {
+            "classCode": "CSC4610",
+            "semester": 7
+        },
+        {
+            "classCode": "options",
+            "semester": 7,
+            "options": upper csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "options",
+            "semester": 7,
+            "options": social/behavioral science FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "CSC4200",
+            "semester": 8
+        },
+        {
+            "classCode": "CSC4615",
+            "semester": 8
+        },
+        {
+            "classCode": "options",
+            "semester": 8,
+            "options": elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        },
+        {
+            "classCode": "options",
+            "semester": 8,
+            "options": upper csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        }
+    ]
+}
