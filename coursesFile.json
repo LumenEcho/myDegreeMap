@@ -18364,7 +18364,6 @@
             "description": "Prerequisite: C or better in MATH 1910; or equivalent AP credit for MATH 1910. Integration techniques, applications of the definite integral, polar coordinates, parametric equations, sequences, and series.",
             "name": "Calculus II",
             "prerequisites": [
-                "MATH1910",
                 "MATH1910"
             ],
             "subjectCode": "MATH"

@@ -17,7 +17,8 @@ let degreeData;
 let degreeJSON;
 let classBoxIdCounter = 0;
 
-let classesArray = [];
+let classesNamesArray = [];
+let classesObjectsArray = [];
 
 classSearchButton.addEventListener("click", () => {
     //Get just the course code from the query and submit it as the argument for the function
@@ -31,7 +32,6 @@ classSearchButton.addEventListener("click", () => {
     }
 
     classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
-    console.log(classQueryCode);
     createClassBox(classQueryCode, 1)
 });
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
@@ -56,7 +56,7 @@ for (let j = 0; j < semesterTops.length; j++) {
     semesterTops[j].children[1].textContent = "Credits: 0";
 }
 
-//Requests the json file
+//Requests the json file for the classes
 async function getClasses() {
     const url="/coursesFile.json";
     const response = await fetch(url).then((response) => response.json());
@@ -64,6 +64,7 @@ async function getClasses() {
     loadSearches(classData, classesList);
 }
 
+//Requests the json file for the degrees list
 async function getDegrees() {
     const url = "/degrees.json";
     const response = await fetch(url).then((response) => response.json());
@@ -71,6 +72,7 @@ async function getDegrees() {
     loadSearches(degreeData, degreesList);
 }
 
+//Requests the json file for the degree template in the argument
 async function getDegreeTemplate(url) {
     const response = await fetch(url).then((response) => response.json());
     degreeJSON = response;
@@ -172,8 +174,16 @@ function createClassBox(classQuery, semester) {
     moreInfoDiv.textContent = "More information >";
     moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
 
+    classBox.prerequisites = classDataEntry["prerequisites"];
+    //Nullish Coalescing Assignment Operator
+    classBox.prerequisites ??= 0;
+
     updateCreditsTotal();
-    classesArray.push(classDataEntry["code"]);
+
+    classesNamesArray.push(classDataEntry["code"]);
+    classesObjectsArray.push(classBox);
+
+    updatePreReqs();
 }
 
 function createOptionsClassBox(classOptionsArray, classOptionsName, semester, credits) {
@@ -240,8 +250,9 @@ function createOptionsClassBox(classOptionsArray, classOptionsName, semester, cr
     moreInfoDiv.textContent = "More information >";
     moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
 
-
-    classesArray.push("options");
+    classBox.prerequisites = -1;
+    classesNamesArray.push("options");
+    classesObjectsArray.push(classBox);
 }
 
 function createElectivesBox(semester, credits) {
@@ -309,14 +320,16 @@ function createElectivesBox(semester, credits) {
     moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
 
 
-    classesArray.push("elective");
+    classBox.prerequisites = -1;
+    classesNamesArray.push("elective");
+    classesObjectsArray.push(classBox);
 }
 
 async function createDegreeTemplate(degreeQuery) {
-    let startingClassesArray = [];
+    let startingclassesNamesArray = [];
     let classFound = false;
-    for (let m = 0; m < classesArray.length; m++) {
-        startingClassesArray[m] = classesArray[m];
+    for (let m = 0; m < classesNamesArray.length; m++) {
+        startingclassesNamesArray[m] = classesNamesArray[m];
     }
 
     switch(degreeQuery) {
@@ -341,10 +354,10 @@ async function createDegreeTemplate(degreeQuery) {
     //For each class in the degree
     for (let i = 0; i < degreeJSON["classes"].length; i++) {
         classFound = false;
-        if (startingClassesArray.length > 0) {
+        if (startingclassesNamesArray.length > 0) {
             //For each class in the starting classes array
-            for (let j = 0; j < startingClassesArray.length; j++) {
-                if (degreeJSON["classes"][i]["classCode"] === classesArray[j]) {
+            for (let j = 0; j < startingclassesNamesArray.length; j++) {
+                if (degreeJSON["classes"][i]["classCode"] === classesNamesArray[j]) {
                     classFound = true;
                     break;
                 }
@@ -382,6 +395,7 @@ async function createDegreeTemplate(degreeQuery) {
         
     }
    updateCreditsTotal();
+   updatePreReqs();
 }
 
 function isCourseCompleted(checkbox, classBox) {
@@ -393,6 +407,8 @@ function isCourseCompleted(checkbox, classBox) {
         classBox.style.backgroundColor = "#e7d2fa";
         classBox.completedClass = false;
     }
+
+    updatePreReqs();
 }
 
 function updateCreditsTotal() {
@@ -403,6 +419,39 @@ function updateCreditsTotal() {
             semesterCredits += tableColumns[i].children[j].classCredits;
         }
         semesterTops[i].children[1].textContent = `Credits: ${semesterCredits}`;
+    }
+}
+
+function updatePreReqs() {
+    let completedClasses = 0;
+    //Iterates through list of class objects
+    for (let i = 0; i < classesObjectsArray.length; i++) {
+        completedClasses = 0;
+        if (classesObjectsArray[i].completedClass === false) {
+            if(classesObjectsArray[i].prerequisites === 0) {
+                classesObjectsArray[i].style.backgroundColor = "#bd8008";
+            }
+            else {
+                //Iterates through prerequisite array
+                for (let j = 0; j < classesObjectsArray[i].prerequisites.length; j++) {
+                    //Iterates through objects array searching for prerequisite class matches
+                    for (let k = 0; k < classesObjectsArray.length; k++) {
+                        if (classesObjectsArray[i].prerequisites[j] === classesObjectsArray[k].children[1].children[0].textContent) {
+                            if (classesObjectsArray[k].completedClass === true) {
+                                completedClasses += 1;
+                            }
+                        }
+                    }
+                }
+                if (completedClasses === classesObjectsArray[i].prerequisites.length) {
+                    classesObjectsArray[i].style.backgroundColor = "#bd8008";
+                }
+                else {
+                    classesObjectsArray[i].style.backgroundColor = "#e7d2fa";
+                }
+            }
+        }
+        
     }
 }
 
