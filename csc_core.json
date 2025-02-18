@@ -40,6 +40,7 @@
         {
             "classCode": "options",
             "semester": 2,
+            "optionsName": "Social/Behavioral Science Elective",
             "options": [
                 "AGBE2010",
                 "ANTH1100",
@@ -71,6 +72,7 @@
         {
             "classCode": "options",
             "semester": 3,
+            "optionsName": "English Literature",
             "options": [
                 "ENGL2130",
                 "ENGL2235",
@@ -80,6 +82,7 @@
         {
             "classCode": "options",
             "semester": 3,
+            "optionsName": "Science Sequence",
             "options": [
                 "BIOL1113",
                 "BIOL1123",
@@ -105,6 +108,7 @@
         {
             "classCode": "options",
             "semester": 4,
+            "optionsName": "CSC Lower Division Elective",
             "options": [
                 "CSC2220",
                 "CSC2570",
@@ -114,6 +118,7 @@
         {
             "classCode": "options",
             "semester": 4,
+            "optionsName": "Communications",
             "options": [
                 "COMM2025",
                 "PC2500"
@@ -122,6 +127,7 @@
         {
             "classCode": "options",
             "semester": 4,
+            "optionsName": "Science Sequence",
             "options": [
                 "BIOL1113",
                 "BIOL1123",
@@ -151,6 +157,7 @@
         {
             "classCode": "options",
             "semester": 5,
+            "optionsName": "Statistics",
             "options": [
                 "MATH3070",
                 "MATH3470"
@@ -159,6 +166,7 @@
         {
             "classCode": "options",
             "semester": 5,
+            "optionsName": "Humanities/Fine Arts Elective",
             "options": [
                 "ART1035",
                 "ART2000",
@@ -192,6 +200,7 @@
         {
             "classCode": "options",
             "semester": 6,
+            "optionsName": "CSC Upper Division Elective",
             "options": [
                 "CSC4010",
                 "CSC4040",
@@ -221,6 +230,7 @@
         {
             "classCode": "options",
             "semester": 6,
+            "optionsName": "CSC Lower Division Elective",
             "options": [
                 "CSC2220",
                 "CSC2570",
@@ -230,6 +240,7 @@
         {
             "classCode": "options",
             "semester": 6,
+            "optionsName": "Humanities/Fine Arts Elective",
             "options": [
                 "ART1035",
                 "ART2000",
@@ -263,6 +274,7 @@
         {
             "classCode": "options",
             "semester": 7,
+            "optionsName": "CSC Upper Division Elective",
             "options": [
                 "CSC4010",
                 "CSC4040",
@@ -292,6 +304,7 @@
         {
             "classCode": "options",
             "semester": 7,
+            "optionsName": "Social/Behavioral Science Elective",
             "options": [
                 "AGBE2010",
                 "ANTH1100",
@@ -323,6 +336,7 @@
         {
             "classCode": "options",
             "semester": 8,
+            "optionsName": "CSC Upper Division Elective",
             "options": [
                 "CSC4010",
                 "CSC4040",

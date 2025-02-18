@@ -14,9 +14,24 @@ let classBoxes;
 
 let classData;
 let degreeData;
+let degreeJSON;
 let classBoxIdCounter = 0;
 
-classSearchButton.addEventListener("click", () => createClassBox(classSelectionBox.value, 1));
+classSearchButton.addEventListener("click", () => {
+    //Get just the course code from the query and submit it as the argument for the function
+    let classQueryCode = "";
+    let classQueryStopIndex = 0;
+    for (let i = 0; i < classSelectionBox.value.length; i++) {
+        if (classSelectionBox.value[i] === ' ') {
+            classQueryStopIndex = i;
+            break;
+        }
+    }
+
+    classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
+    console.log(classQueryCode);
+    createClassBox(classQueryCode, 1)
+});
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
 for (let i = 0; i < tableColumns.length; i++) {
     tableColumns[i].addEventListener("dragover", (dragBox) => {
@@ -54,6 +69,11 @@ async function getDegrees() {
     loadSearches(degreeData, degreesList);
 }
 
+async function getDegreeTemplate(url) {
+    const response = await fetch(url).then((response) => response.json());
+    degreeJSON = response;
+}
+
 
 function loadSearches(data, searchBar) {
     for (let i = 0; i < data.length; i++) {
@@ -72,20 +92,11 @@ function loadSearches(data, searchBar) {
 }
 
 function createClassBox(classQuery, semester) {
-    let classQueryCode = "";
     let classDataEntry;
     let foundClass = false;
-    let classQueryStopIndex = 0;
-    for (let j = 0; j < classQuery.length; j++) {
-        if (classQuery[j] === ' ') {
-            classQueryStopIndex = j;
-            break;
-        }
-    }
-    classQueryCode = classQueryCode + (classQuery.substring(0, classQueryStopIndex));
 
     for (let i = 0; i < classData.length; i++) {
-        if (classData[i].code == classQueryCode) {
+        if (classData[i].code == classQuery) {
             classDataEntry = classData[i];
             foundClass = true;
             break;
@@ -161,8 +172,103 @@ function createClassBox(classQuery, semester) {
     updateCreditsTotal();
 }
 
-function createDegreeTemplate(degreeQuery) {
+function createOptionsClassBox(classOptionsArray, classOptionsName, semester) {
+    //Outer Class Box
+    let classBox = document.createElement("div");
+    classBox.completedClass = false;
+    classBox.className = "box";
+    classBox.id = "classbox" + classBoxIdCounter;
+    classBoxIdCounter += 1;
+    tableColumns[semester].append(classBox);
+
+    //Top row of the box
+    let boxCheck = document.createElement("div");
+    classBox.append(boxCheck);
+    boxCheck.className = "boxCheck";
+    classBox.draggable = true;
+    // Event listener for dragging the box
+    classBox.addEventListener("dragstart", (dragBox) => {
+        dragBox.dataTransfer.dropEffect = "move"
+        dragBox.dataTransfer.setData("text", dragBox.target.id);
+        dragBox.dataTransfer.effectAllowed = "move";
+    });
     
+    //Checkbox container div in top of box
+    let checkBoxButtonDiv = document.createElement("div");
+    checkBoxButtonDiv.className = "checkBoxButtonDiv";
+    boxCheck.append(checkBoxButtonDiv);
+
+    //Bottom of box
+    let boxText = document.createElement("div");
+    classBox.append(boxText);
+    boxText.className = "boxText";
+
+    //Class code in bottom of box
+    let courseCodeDiv = document.createElement("div");
+    courseCodeDiv.className = "courseCodeDiv";
+    boxText.append(courseCodeDiv);
+    courseCodeDiv.textContent = classDataEntry["code"];
+
+    //Name of class in 2nd row
+    let nameDiv = document.createElement("div");
+    nameDiv.className = "nameDiv";
+    boxText.append(nameDiv);
+    nameDiv.textContent = classDataEntry["name"];
+
+    //Amount of credits in 3rd row
+    let creditDiv = document.createElement("div");
+    creditDiv.className = "creditDiv";
+    boxText.append(creditDiv);
+    creditDiv.textContent = `Credits: ${classDataEntry["credits"]}`;
+
+    //More info button in 4th/bottom row
+    let moreInfoDiv = document.createElement("div");
+    moreInfoDiv.className = "moreInfoDiv";
+    boxText.append(moreInfoDiv);
+    moreInfoDiv.textContent = "More information >";
+    moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
+}
+
+async function createDegreeTemplate(degreeQuery) {
+    switch(degreeQuery) {
+        case "Computer Science: No Concentration":
+            await getDegreeTemplate("/csc_core.json");
+            break;
+        case "Computer Science: Data Science and Artifical Intelligence Concentration":
+            await getDegreeTemplate("/csc_dsai.json");
+            break;
+        case "Computer Science: Cybersecurity Concentration":
+            await getDegreeTemplate("/csc_cybersecurity.json");
+            break;
+        case "Computer Science: High Performance Computing Concentration":
+            await getDegreeTemplate("/csc_hpc.json");
+            break;
+        default:
+            alert("Please enter a valid degree");
+            return;
+    }
+
+    for (let i = 0; i < degreeJSON["classes"].length; i++) {
+        console.log("degreeJSON loop ran");
+        for (let semesterRow = 0; semesterRow < tableColumns.length; semesterRow++) {
+            console.log("Semester Row loop ran");
+            for (let classCounter = 0; classCounter <= tableColumns[semesterRow].children.length; classCounter++) {
+                console.log("ClassCounter loop ran");
+                if (tableColumns[semesterRow].children[classCounter] === degreeJSON["classes"][i]["classCode"]) {
+                    continue;
+                }
+                else {
+                    if (degreeJSON["classes"][i]["classCode"] != "options") {
+                        console.log("We got here");
+                        createClassBox(degreeJSON["classes"][i]["classCode"], degreeJSON["classes"][i]["semester"]);
+                    }
+                    else {
+                        createOptionsClassBox(degreeJSON["classes"][i]["options"], degreeJSON["classes"][i]["optionsName"], degreeJSON["classes"][i]["semester"]);
+                    }
+                }
+            }
+        }
+    }
 }
 
 function isCourseCompleted(checkbox, classBox) {
@@ -191,3 +297,4 @@ function updateCreditsTotal() {
         semesterTops[i].children[1].textContent = `Credits: ${semesterCredits}`;
     }
 }
+
