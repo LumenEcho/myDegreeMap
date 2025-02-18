@@ -7404,9 +7404,7 @@
             "description": "Prerequisite: Junior standing, COMM 2025 or PC 2500, and C or better in CSC 1310. Social, ethical, and career aspects of computing. Written, oral, and audio-visual communication in computer science, presentation techniques, report preparation, and technical correspondence. Introduction to research in computing.",
             "name": "Profsnlsm, Comm, Rsrch in Comp",
             "prerequisites": [
-                "Junior",
                 "COMM2025",
-                "PC2500",
                 "CSC1310"
             ],
             "subjectCode": "CSC"

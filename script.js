@@ -10,6 +10,15 @@ let semesterTops = document.getElementsByClassName("semesterTop");
 let degreeSearchButton = document.getElementById("degreeButton");
 let classSearchButton = document.getElementById("classButton");
 
+let moreInfoBox = document.getElementById("dialogBox");
+let dialogCloseButton = document.getElementById("dialogCloseButton");
+
+let dialogClassNameBox = document.getElementById("dialogClassNameDiv");
+let dialogClassCodeBox = document.getElementById("dialogClassCodeDiv");
+let dialogClassCreditsBox = document.getElementById("dialogClassCreditsDiv");
+let dialogClassDescriptionBox = document.getElementById("dialogDescriptionDiv");
+
+
 let classBoxes;
 
 let classData;
@@ -19,6 +28,8 @@ let classBoxIdCounter = 0;
 
 let classesNamesArray = [];
 let classesObjectsArray = [];
+
+dialogCloseButton.addEventListener("click", () => {moreInfoBox.close()});
 
 classSearchButton.addEventListener("click", () => {
     //Get just the course code from the query and submit it as the argument for the function
@@ -119,6 +130,11 @@ function createClassBox(classQuery, semester) {
     classBoxIdCounter += 1;
     tableColumns[semester].append(classBox);
 
+    classBox.classCode = classDataEntry["code"];
+    classBox.schoolClassName = classDataEntry["name"];
+    classBox.classDescription = classDataEntry["description"];
+    
+
     //Top row of the box
     let boxCheck = document.createElement("div");
     classBox.append(boxCheck);
@@ -172,7 +188,7 @@ function createClassBox(classQuery, semester) {
     moreInfoDiv.className = "moreInfoDiv";
     boxText.append(moreInfoDiv);
     moreInfoDiv.textContent = "More information >";
-    moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
+    moreInfoDiv.addEventListener("click", () => {moreInformation("normal", classBox)});
 
     classBox.prerequisites = classDataEntry["prerequisites"];
     //Nullish Coalescing Assignment Operator
@@ -248,7 +264,7 @@ function createOptionsClassBox(classOptionsArray, classOptionsName, semester, cr
     moreInfoDiv.className = "moreInfoDiv";
     boxText.append(moreInfoDiv);
     moreInfoDiv.textContent = "More information >";
-    moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
+    moreInfoDiv.addEventListener("click", () => {moreInformation("options", classBox)});
 
     classBox.prerequisites = -1;
     classesNamesArray.push("options");
@@ -317,7 +333,7 @@ function createElectivesBox(semester, credits) {
     moreInfoDiv.className = "moreInfoDiv";
     boxText.append(moreInfoDiv);
     moreInfoDiv.textContent = "More information >";
-    moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
+    moreInfoDiv.addEventListener("click", () => {moreInformation("elective", classBox)});
 
 
     classBox.prerequisites = -1;
@@ -455,3 +471,13 @@ function updatePreReqs() {
     }
 }
 
+function moreInformation(type, classInfo) {
+    moreInfoBox.showModal();
+    if (type === "normal") {
+        dialogClassNameBox.textContent = classInfo.schoolClassName;
+        dialogClassCodeBox.textContent = classInfo.classCode;
+        dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
+        dialogClassDescriptionBox.textContent = classInfo.classDescription;
+    }
+
+}

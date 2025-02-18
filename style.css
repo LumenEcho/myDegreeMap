@@ -103,3 +103,13 @@ body{
 .checkBoxButtonDiv{
     display: flex;
 }
+
+::backdrop {
+    background-color: white;
+    opacity: .75;
+}
+
+#dialogBox {
+    height: 90vh;
+    width: 50vw;
+}
