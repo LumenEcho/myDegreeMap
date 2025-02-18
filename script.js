@@ -101,7 +101,6 @@ function createClassBox(classQuery, semester) {
     classBox.id = "classbox" + classBoxIdCounter;
     classBoxIdCounter += 1;
     tableColumns[semester].append(classBox);
-    //semesterOneRow.append(classBox);
 
     //Top row of the box
     let boxCheck = document.createElement("div");
@@ -178,16 +177,6 @@ function isCourseCompleted(checkbox, classBox) {
 }
 
 function updateCreditsTotal() {
-    /*let totalCredits = 0;
-    for (let i = 0; i < tableColumns[semester].childElementCount; i++) {
-        for (let j = 0; j < classData.length-1; j++) {
-            if (tableColumns[semester].children[i].children[0].children[0].textContent === classData[j]["code"]) {
-                totalCredits += classData[j]["credits"];
-                break;
-            }
-        }
-    }
-    semesterTops[semester].children[1].textContent = `Credits: ${totalCredits}`;*/
     let semesterCredits = 0;
     for (let i = 0; i < tableColumns.length; i++) {
         console.log("We got to this loop");
