@@ -45,12 +45,11 @@ body{
     max-width: 12em;
     min-width: 12em;
     max-height: calc(100vh - 10em);
-    overflow-y: scroll;
 }
 
 .row{
     display: flex;
-    min-height: 1em;
+    min-height: calc(100vh - 16em);
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     height: 100%;
