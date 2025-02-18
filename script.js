@@ -29,10 +29,7 @@ let classBoxIdCounter = 0;
 let classesNamesArray = [];
 let classesObjectsArray = [];
 
-dialogCloseButton.addEventListener("click", () => {
-    moreInfoBox.close();
-    moreInfoBox.opacity = 0;
-});
+dialogCloseButton.addEventListener("click", () => {moreInfoBox.close();});
 
 classSearchButton.addEventListener("click", () => {
     //Get just the course code from the query and submit it as the argument for the function
