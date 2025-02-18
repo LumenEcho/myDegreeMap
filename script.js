@@ -29,7 +29,10 @@ let classBoxIdCounter = 0;
 let classesNamesArray = [];
 let classesObjectsArray = [];
 
-dialogCloseButton.addEventListener("click", () => {moreInfoBox.close()});
+dialogCloseButton.addEventListener("click", () => {
+    moreInfoBox.close();
+    moreInfoBox.opacity = 0;
+});
 
 classSearchButton.addEventListener("click", () => {
     //Get just the course code from the query and submit it as the argument for the function
@@ -210,6 +213,9 @@ function createOptionsClassBox(classOptionsArray, classOptionsName, semester, cr
     classBox.id = "classbox" + classBoxIdCounter;
     classBoxIdCounter += 1;
     tableColumns[semester].append(classBox);
+
+    classBox.classOptionsName = classOptionsName;
+    classBox.classOptions = classOptionsArray;
 
     //Top row of the box
     let boxCheck = document.createElement("div");
@@ -472,12 +478,26 @@ function updatePreReqs() {
 }
 
 function moreInformation(type, classInfo) {
-    moreInfoBox.showModal();
+    moreInfoBox.style.opacity = 1;
+    let concatDesc = "";
     if (type === "normal") {
         dialogClassNameBox.textContent = classInfo.schoolClassName;
         dialogClassCodeBox.textContent = classInfo.classCode;
         dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
         dialogClassDescriptionBox.textContent = classInfo.classDescription;
     }
+    else if (type === "options") {
+        dialogClassNameBox.textContent = classInfo.classOptionsName;
+        dialogClassCodeBox.textContent = "You may choose any of the following classes";
+        dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
+        dialogClassDescriptionBox.textContent = classInfo.classOptions.toString();
+
+    }
+    else {
+        dialogClassNameBox.textContent = "Free Elective";
+        dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
+        dialogClassDescriptionBox.textContent = `You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.`;
+    }
+moreInfoBox.showModal();
 
 }

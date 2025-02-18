@@ -124,6 +124,43 @@ body{
 }
 
 #dialogBox {
+    opacity: 0;
+    display: hidden;
     height: 90vh;
     width: 50vw;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+}
+
+#topCloseBox {
+    height: 10vh;
+}
+
+#dialogClassNameDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+#dialogClassCodeDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+#dialogClassCreditsDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+#dialogDescriptionDiv {
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    overflow-wrap: normal;
 }
