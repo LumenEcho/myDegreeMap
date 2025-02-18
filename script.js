@@ -241,6 +241,7 @@ function createOptionsClassBox(classOptionsArray, classOptionsName, semester) {
 
 async function createDegreeTemplate(degreeQuery) {
     let startingClassesArray = [];
+    let classFound = false;
     for (let m = 0; m < classesArray.length; m++) {
         startingClassesArray[m] = classesArray[m];
     }
@@ -268,16 +269,21 @@ async function createDegreeTemplate(degreeQuery) {
 
     //For each class in the degree
     for (let i = 0; i < degreeJSON["classes"].length; i++) {
-        //For each class in the classes array
+        classFound = false;
         console.log(startingClassesArray);
         if (startingClassesArray.length > 0) {
+            //For each class in the starting classes array
             for (let j = 0; j < startingClassesArray.length; j++) {
-                if (degreeJSON["classes"][i]["className"] === classesArray[j]) {
+                if (degreeJSON["classes"][i]["classCode"] === classesArray[j]) {
+                    classFound = true;
                     break;
                 }
                 else {
+                    classFound = false;
+                }
+            }
+                if (classFound === false) {
                     if (degreeJSON["classes"][i]["classCode"] === "options") {
-                        continue;
                         //createOptionsClassBox(degreeJSON["classes"][i]["options"], degreeJSON["classes"][i]["optionsName"], degreeJSON["classes"][i]["semester"]);
                     }
                     else {
@@ -285,17 +291,15 @@ async function createDegreeTemplate(degreeQuery) {
                     }
                 }
                 console.log(classesArray);
-            }
+            
         }
         else {
-            for (let k = 0; k < degreeJSON["classes"].length; k++) {
-                if (degreeJSON["classes"][i]["classCode"] === "options") {
-                    continue;
-                    //createOptionsClassBox(degreeJSON["classes"][i]["options"], degreeJSON["classes"][i]["optionsName"], degreeJSON["classes"][i]["semester"]);
-                }
-                else {
-                    createClassBox(degreeJSON["classes"][i]["classCode"], degreeJSON["classes"][i]["semester"]);
-                }
+            if (degreeJSON["classes"][i]["classCode"] === "options") {
+                continue;
+                //createOptionsClassBox(degreeJSON["classes"][i]["options"], degreeJSON["classes"][i]["optionsName"], degreeJSON["classes"][i]["semester"]);
+            }
+            else {
+                createClassBox(degreeJSON["classes"][i]["classCode"], degreeJSON["classes"][i]["semester"]);
             }
         }
         
@@ -320,12 +324,6 @@ function updateCreditsTotal() {
         semesterCredits = 0;
         for (let j = 0; j < tableColumns[i].children.length; j++) {
             semesterCredits += tableColumns[i].children[j].classCredits;
-            /*for (let m = 0; m < classData.length; m++) {
-                if (tableColumns[i].children[0].children[1].children[0].textContent === classData[m]["code"]) {
-                    semesterCredits += classData[m]["credits"];
-                    break;
-                }
-            }*/
         }
         semesterTops[i].children[1].textContent = `Credits: ${semesterCredits}`;
     }
