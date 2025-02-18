@@ -94,7 +94,6 @@ function loadSearches(data, searchBar) {
 }
 
 function createClassBox(classQuery, semester) {
-    console.log("CreateClassBox called");
     let classDataEntry;
     let foundClass = false;
 
@@ -177,8 +176,7 @@ function createClassBox(classQuery, semester) {
     classesArray.push(classDataEntry["code"]);
 }
 
-function createOptionsClassBox(classOptionsArray, classOptionsName, semester) {
-    console.log("createOptionsClassBoxCalled");
+function createOptionsClassBox(classOptionsArray, classOptionsName, semester, credits) {
     //Outer Class Box
     let classBox = document.createElement("div");
     classBox.completedClass = false;
@@ -204,6 +202,13 @@ function createOptionsClassBox(classOptionsArray, classOptionsName, semester) {
     checkBoxButtonDiv.className = "checkBoxButtonDiv";
     boxCheck.append(checkBoxButtonDiv);
 
+    //Actual checkbox in top
+    let courseCheckbox = document.createElement("input");
+    courseCheckbox.type = "checkbox";
+    checkBoxButtonDiv.className = "courseCheckbox";
+    checkBoxButtonDiv.append(courseCheckbox);
+    courseCheckbox.addEventListener("click", () => isCourseCompleted(courseCheckbox, classBox));
+
     //Bottom of box
     let boxText = document.createElement("div");
     classBox.append(boxText);
@@ -213,19 +218,20 @@ function createOptionsClassBox(classOptionsArray, classOptionsName, semester) {
     let courseCodeDiv = document.createElement("div");
     courseCodeDiv.className = "courseCodeDiv";
     boxText.append(courseCodeDiv);
-    courseCodeDiv.textContent = classDataEntry["code"];
+    courseCodeDiv.textContent = classOptionsName;
 
     //Name of class in 2nd row
     let nameDiv = document.createElement("div");
     nameDiv.className = "nameDiv";
     boxText.append(nameDiv);
-    nameDiv.textContent = classDataEntry["name"];
+    nameDiv.textContent = "Choose one of the available classes";
 
     //Amount of credits in 3rd row
     let creditDiv = document.createElement("div");
     creditDiv.className = "creditDiv";
     boxText.append(creditDiv);
-    creditDiv.textContent = `Credits: ${classDataEntry["credits"]}`;
+    creditDiv.textContent = `Credits: ${credits}`;
+    classBox.classCredits = credits;
 
     //More info button in 4th/bottom row
     let moreInfoDiv = document.createElement("div");
@@ -235,8 +241,75 @@ function createOptionsClassBox(classOptionsArray, classOptionsName, semester) {
     moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
 
 
-    //TODO: Check that this is right
-    classesArray.push(classDataEntry["code"]);
+    classesArray.push("options");
+}
+
+function createElectivesBox(semester, credits) {
+    //Outer Class Box
+    let classBox = document.createElement("div");
+    classBox.completedClass = false;
+    classBox.className = "box";
+    classBox.id = "classbox" + classBoxIdCounter;
+    classBoxIdCounter += 1;
+    tableColumns[semester].append(classBox);
+
+    //Top row of the box
+    let boxCheck = document.createElement("div");
+    classBox.append(boxCheck);
+    boxCheck.className = "boxCheck";
+    classBox.draggable = true;
+    // Event listener for dragging the box
+    classBox.addEventListener("dragstart", (dragBox) => {
+        dragBox.dataTransfer.dropEffect = "move"
+        dragBox.dataTransfer.setData("text", dragBox.target.id);
+        dragBox.dataTransfer.effectAllowed = "move";
+    });
+    
+    //Checkbox container div in top of box
+    let checkBoxButtonDiv = document.createElement("div");
+    checkBoxButtonDiv.className = "checkBoxButtonDiv";
+    boxCheck.append(checkBoxButtonDiv);
+
+    //Actual checkbox in top
+    let courseCheckbox = document.createElement("input");
+    courseCheckbox.type = "checkbox";
+    checkBoxButtonDiv.className = "courseCheckbox";
+    checkBoxButtonDiv.append(courseCheckbox);
+    courseCheckbox.addEventListener("click", () => isCourseCompleted(courseCheckbox, classBox));
+
+    //Bottom of box
+    let boxText = document.createElement("div");
+    classBox.append(boxText);
+    boxText.className = "boxText";
+
+    //Class code in bottom of box
+    let courseCodeDiv = document.createElement("div");
+    courseCodeDiv.className = "courseCodeDiv";
+    boxText.append(courseCodeDiv);
+    courseCodeDiv.textContent = "Electives";
+
+    //Name of class in 2nd row
+    let nameDiv = document.createElement("div");
+    nameDiv.className = "nameDiv";
+    boxText.append(nameDiv);
+    nameDiv.textContent = "Choose one of the available classes";
+
+    //Amount of credits in 3rd row
+    let creditDiv = document.createElement("div");
+    creditDiv.className = "creditDiv";
+    boxText.append(creditDiv);
+    creditDiv.textContent = `Credits: ${credits}`;
+    classBox.classCredits = credits;
+
+    //More info button in 4th/bottom row
+    let moreInfoDiv = document.createElement("div");
+    moreInfoDiv.className = "moreInfoDiv";
+    boxText.append(moreInfoDiv);
+    moreInfoDiv.textContent = "More information >";
+    moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
+
+
+    classesArray.push("elective");
 }
 
 async function createDegreeTemplate(degreeQuery) {
@@ -264,13 +337,10 @@ async function createDegreeTemplate(degreeQuery) {
             return;
     }
 
-    console.log(degreeJSON["classes"]);
-    console.log(classesArray);
 
     //For each class in the degree
     for (let i = 0; i < degreeJSON["classes"].length; i++) {
         classFound = false;
-        console.log(startingClassesArray);
         if (startingClassesArray.length > 0) {
             //For each class in the starting classes array
             for (let j = 0; j < startingClassesArray.length; j++) {
@@ -278,25 +348,32 @@ async function createDegreeTemplate(degreeQuery) {
                     classFound = true;
                     break;
                 }
+                else if (degreeJSON["classes"][i]["classCode"] === 1) {
+
+                }
                 else {
                     classFound = false;
                 }
             }
                 if (classFound === false) {
                     if (degreeJSON["classes"][i]["classCode"] === "options") {
-                        //createOptionsClassBox(degreeJSON["classes"][i]["options"], degreeJSON["classes"][i]["optionsName"], degreeJSON["classes"][i]["semester"]);
+                        createOptionsClassBox(degreeJSON["classes"][i]["options"], degreeJSON["classes"][i]["optionsName"], degreeJSON["classes"][i]["semester"], degreeJSON["classes"][i]["credits"]);
+                    }
+                    else if (degreeJSON["classes"][i]["classCode"] === "elective") {
+                        createElectivesBox(degreeJSON["classes"][i]["semester"], degreeJSON["classes"][i]["credits"]);
                     }
                     else {
                         createClassBox(degreeJSON["classes"][i]["classCode"], degreeJSON["classes"][i]["semester"]);
                     }
                 }
-                console.log(classesArray);
             
         }
         else {
             if (degreeJSON["classes"][i]["classCode"] === "options") {
-                continue;
-                //createOptionsClassBox(degreeJSON["classes"][i]["options"], degreeJSON["classes"][i]["optionsName"], degreeJSON["classes"][i]["semester"]);
+                createOptionsClassBox(degreeJSON["classes"][i]["options"], degreeJSON["classes"][i]["optionsName"], degreeJSON["classes"][i]["semester"], degreeJSON["classes"][i]["credits"]);
+            }
+            else if (degreeJSON["classes"][i]["classCode"] === "elective") {
+                createElectivesBox(degreeJSON["classes"][i]["semester"], degreeJSON["classes"][i]["credits"]);
             }
             else {
                 createClassBox(degreeJSON["classes"][i]["classCode"], degreeJSON["classes"][i]["semester"]);
