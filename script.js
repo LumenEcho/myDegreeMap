@@ -104,9 +104,9 @@ function createClassBox(classQuery, semester) {
     //semesterOneRow.append(classBox);
 
     //Top row of the box
-    let boxLeftWrap = document.createElement("div");
-    classBox.append(boxLeftWrap);
-    boxLeftWrap.className = "boxLeftWrap";
+    let boxCheck = document.createElement("div");
+    classBox.append(boxCheck);
+    boxCheck.className = "boxCheck";
     classBox.draggable = true;
     // Event listener for dragging the box
     classBox.addEventListener("dragstart", (dragBox) => {
@@ -116,45 +116,45 @@ function createClassBox(classQuery, semester) {
         dragBox.dataTransfer.effectAllowed = "move";
     });
 
-    //Right column in box
-    let boxRightWrap = document.createElement("div");
-    classBox.append(boxRightWrap);
-    boxRightWrap.className = "boxRightWrap";
-
-    //Class code in top left of box
-    let courseCodeDiv = document.createElement("div");
-    courseCodeDiv.className = "courseCodeDiv";
-    boxLeftWrap.append(courseCodeDiv);
-    courseCodeDiv.textContent = classDataEntry["code"];
-
-    //Checkbox container div in top right of box
+    //Checkbox container div in top of box
     let checkBoxButtonDiv = document.createElement("div");
     checkBoxButtonDiv.className = "checkBoxButtonDiv";
-    boxRightWrap.append(checkBoxButtonDiv);
+    boxCheck.append(checkBoxButtonDiv);
 
-    //Actual checkbox in top right corner
+    //Actual checkbox in top
     let courseCheckbox = document.createElement("input");
     courseCheckbox.type = "checkbox";
     checkBoxButtonDiv.className = "courseCheckbox";
     checkBoxButtonDiv.append(courseCheckbox);
     courseCheckbox.addEventListener("click", () => isCourseCompleted(courseCheckbox, classBox));
 
+    //Bottom of box
+    let boxText = document.createElement("div");
+    classBox.append(boxText);
+    boxText.className = "boxText";
+
+    //Class code in bottom of box
+    let courseCodeDiv = document.createElement("div");
+    courseCodeDiv.className = "courseCodeDiv";
+    boxText.append(courseCodeDiv);
+    courseCodeDiv.textContent = classDataEntry["code"];
+
     //Name of class in 2nd row
     let nameDiv = document.createElement("div");
     nameDiv.className = "nameDiv";
-    boxLeftWrap.append(nameDiv);
+    boxText.append(nameDiv);
     nameDiv.textContent = classDataEntry["name"];
 
     //Amount of credits in 3rd row
     let creditDiv = document.createElement("div");
     creditDiv.className = "creditDiv";
-    boxLeftWrap.append(creditDiv);
+    boxText.append(creditDiv);
     creditDiv.textContent = `Credits: ${classDataEntry["credits"]}`;
 
     //More info button in 4th/bottom row
     let moreInfoDiv = document.createElement("div");
     moreInfoDiv.className = "moreInfoDiv";
-    boxLeftWrap.append(moreInfoDiv);
+    boxText.append(moreInfoDiv);
     moreInfoDiv.textContent = "More information >";
     moreInfoDiv.addEventListener("click", () => {console.log("You clicked more info!")});
 
@@ -196,7 +196,7 @@ function updateCreditsTotal() {
             console.log("We got here");
             for (let m = 0; m < classData.length; m++) {
                 console.log("We've hit m loop")
-                if (tableColumns[i].children[0].children[0].children[0].textContent === classData[m]["code"]) {
+                if (tableColumns[i].children[0].children[1].children[0].textContent === classData[m]["code"]) {
                     console.log(semesterCredits);
                     semesterCredits += classData[m]["credits"];
                     break;

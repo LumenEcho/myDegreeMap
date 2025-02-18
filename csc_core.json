@@ -1,4 +1,5 @@
 {
+    "hours": 120,
     "classes": [
         {
             "classCode": "ENGL1010",
@@ -39,7 +40,21 @@
         {
             "classCode": "options",
             "semester": 2,
-            "options": social/behavioral science FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "AGBE2010",
+                "ANTH1100",
+                "ECON2010",
+                "ECON2020",
+                "ESS1100",
+                "EXPW2015",
+                "GEOG1012",
+                "GEOG1130",
+                "JOUR1110",
+                "POLS1030",
+                "PSY1030",
+                "SOC1010",
+                "WGS2010"
+            ]
         },
         {
             "classCode": "CSC2310",
@@ -56,12 +71,28 @@
         {
             "classCode": "options",
             "semester": 3,
-            "options": eng lit FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "ENGL2130",
+                "ENGL2235",
+                "ENGL2330"
+            ]
         },
         {
             "classCode": "options",
             "semester": 3,
-            "options": science FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "BIOL1113",
+                "BIOL1123",
+                "BIOL2310",
+                "CHEM1110",
+                "CHEM1120",
+                "GEOL1040",
+                "GEOL1045",
+                "PHYS2010",
+                "PHYS2020",
+                "PHYS2110",
+                "PHYS2120"
+            ]
         },
         {
             "classCode": "CSC2400",
@@ -74,7 +105,11 @@
         {
             "classCode": "options",
             "semester": 4,
-            "options": lower csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "CSC2220",
+                "CSC2570",
+                "CSC2770"
+            ]
         },
         {
             "classCode": "options",
@@ -87,7 +122,19 @@
         {
             "classCode": "options",
             "semester": 4,
-            "options": science FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "BIOL1113",
+                "BIOL1123",
+                "BIOL2310",
+                "CHEM1110",
+                "CHEM1120",
+                "GEOL1040",
+                "GEOL1045",
+                "PHYS2010",
+                "PHYS2020",
+                "PHYS2110",
+                "PHYS2120"
+            ]
         },
         {
             "classCode": "CSC3300",
@@ -112,7 +159,27 @@
         {
             "classCode": "options",
             "semester": 5,
-            "options": humanities/fine arts FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "ART1035",
+                "ART2000",
+                "ART2020",
+                "FLST2520",
+                "FLST3520",
+                "FREN2510",
+                "GERM2520",
+                "HIST2210",
+                "HIST2220",
+                "HIST2310",
+                "HIST2320",
+                "HIST1310",
+                "MUS1030",
+                "PHIL1030",
+                "PHIL2250",
+                "RELS2010",
+                "SPAN2510",
+                "SPAN2550",
+                "THEA1030 "
+            ]
         },
         {
             "classCode": "CSC3040",
@@ -125,17 +192,65 @@
         {
             "classCode": "options",
             "semester": 6,
-            "options": upper csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "CSC4010",
+                "CSC4040",
+                "CSC4220",
+                "CSC4240",
+                "CSC4260",
+                "CSC4400",
+                "CSC4570",
+                "CSC4575",
+                "CSC4580",
+                "CSC4585",
+                "CSC4620",
+                "CSC4710",
+                "CSC4750",
+                "CSC4760",
+                "CSC4770",
+                "CSC4780",
+                "CSC4801",
+                "CSC4802",
+                "CSC4803",
+                "CSC4901",
+                "CSC4902",
+                "CSC4903",
+                "CSC4990"
+            ]
         },
         {
             "classCode": "options",
             "semester": 6,
-            "options": lower csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "CSC2220",
+                "CSC2570",
+                "CSC2770"
+            ]
         },
         {
             "classCode": "options",
             "semester": 6,
-            "options": humanities/fine arts FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "ART1035",
+                "ART2000",
+                "ART2020",
+                "FLST2520",
+                "FLST3520",
+                "FREN2510",
+                "GERM2520",
+                "HIST2210",
+                "HIST2220",
+                "HIST2310",
+                "HIST2320",
+                "HIST1310",
+                "MUS1030",
+                "PHIL1030",
+                "PHIL2250",
+                "RELS2010",
+                "SPAN2510",
+                "SPAN2550",
+                "THEA1030 "
+            ]
         },
         {
             "classCode": "CSC4100",
@@ -148,12 +263,50 @@
         {
             "classCode": "options",
             "semester": 7,
-            "options": upper csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "CSC4010",
+                "CSC4040",
+                "CSC4220",
+                "CSC4240",
+                "CSC4260",
+                "CSC4400",
+                "CSC4570",
+                "CSC4575",
+                "CSC4580",
+                "CSC4585",
+                "CSC4620",
+                "CSC4710",
+                "CSC4750",
+                "CSC4760",
+                "CSC4770",
+                "CSC4780",
+                "CSC4801",
+                "CSC4802",
+                "CSC4803",
+                "CSC4901",
+                "CSC4902",
+                "CSC4903",
+                "CSC4990"
+            ]
         },
         {
             "classCode": "options",
             "semester": 7,
-            "options": social/behavioral science FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "AGBE2010",
+                "ANTH1100",
+                "ECON2010",
+                "ECON2020",
+                "ESS1100",
+                "EXPW2015",
+                "GEOG1012",
+                "GEOG1130",
+                "JOUR1110",
+                "POLS1030",
+                "PSY1030",
+                "SOC1010",
+                "WGS2010"
+            ]
         },
         {
             "classCode": "CSC4200",
@@ -164,14 +317,37 @@
             "semester": 8
         },
         {
-            "classCode": "options",
-            "semester": 8,
-            "options": elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "classCode": "elective",
+            "semester": 8
         },
         {
             "classCode": "options",
             "semester": 8,
-            "options": upper csc elective FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            "options": [
+                "CSC4010",
+                "CSC4040",
+                "CSC4220",
+                "CSC4240",
+                "CSC4260",
+                "CSC4400",
+                "CSC4570",
+                "CSC4575",
+                "CSC4580",
+                "CSC4585",
+                "CSC4620",
+                "CSC4710",
+                "CSC4750",
+                "CSC4760",
+                "CSC4770",
+                "CSC4780",
+                "CSC4801",
+                "CSC4802",
+                "CSC4803",
+                "CSC4901",
+                "CSC4902",
+                "CSC4903",
+                "CSC4990"
+            ]
         }
     ]
 }
