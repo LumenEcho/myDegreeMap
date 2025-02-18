@@ -10,6 +10,8 @@ let semesterTops = document.getElementsByClassName("semesterTop");
 let degreeSearchButton = document.getElementById("degreeButton");
 let classSearchButton = document.getElementById("classButton");
 
+let classBoxes;
+
 let classData;
 let degreeData;
 let classBoxIdCounter = 0;
@@ -109,7 +111,6 @@ function createClassBox(classQuery, semester) {
     classBox.draggable = true;
     // Event listener for dragging the box
     classBox.addEventListener("dragstart", (dragBox) => {
-        console.log(dragBox);
         dragBox.dataTransfer.dropEffect = "move"
         dragBox.dataTransfer.setData("text", dragBox.target.id);
         dragBox.dataTransfer.effectAllowed = "move";
@@ -173,20 +174,15 @@ function isCourseCompleted(checkbox, classBox) {
         classBox.style.backgroundColor = "#e7d2fa";
         classBox.completedClass = false;
     }
-    console.log(classBox.completedClass);
 }
 
 function updateCreditsTotal() {
     let semesterCredits = 0;
     for (let i = 0; i < tableColumns.length; i++) {
-        console.log("We got to this loop");
         semesterCredits = 0;
         for (let j = 0; j < tableColumns[i].children.length; j++) {
-            console.log("We got here");
             for (let m = 0; m < classData.length; m++) {
-                console.log("We've hit m loop")
                 if (tableColumns[i].children[0].children[1].children[0].textContent === classData[m]["code"]) {
-                    console.log(semesterCredits);
                     semesterCredits += classData[m]["credits"];
                     break;
                 }
