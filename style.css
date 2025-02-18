@@ -15,14 +15,7 @@ body{
 
 #selectorWrapper {
     display: flex;
-    justify-content: left;
-    
-
-}
-
-.selectorLabel{
-    font-size: 1.25em;
-    padding: 0.625em;
+    justify-content: center;
 }
 
 #degreeDatalist, #classDatalist {
@@ -40,14 +33,25 @@ body{
 #topOfSite{
     display:flex;
     overflow-x: auto;
+
 }
 
 #colorKey{
-    
+    display:flex;
+    justify-content: center;
+    padding: 0.625em;
+}
+
+label{
+    font-size: 1.25em;
+    padding: 0.625em;
+    justify-content: center;
 }
 
 #totCompCred{
-
+    display:flex;
+    justify-content: center;
+    padding: 0.625em;
 }
 
 .column {
