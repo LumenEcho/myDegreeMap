@@ -15,8 +15,9 @@ body{
 
 #selectorWrapper {
     display: flex;
-    justify-content: center;
-    overflow-x: auto;
+    justify-content: left;
+    
+
 }
 
 .selectorLabel{
@@ -34,6 +35,19 @@ body{
 #semesters_table {
     display: flex;
     overflow-x: scroll;
+}
+
+#topOfSite{
+    display:flex;
+    overflow-x: auto;
+}
+
+#colorKey{
+    
+}
+
+#totCompCred{
+
 }
 
 .column {
