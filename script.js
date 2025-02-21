@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 let testDiv = document.getElementById("testDiv");
 let degreeSelectionBox = document.getElementById("degreesChoice");
 let classSelectionBox = document.getElementById("classChoice");
