@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+
 let testDiv = document.getElementById("testDiv");
 let degreeSelectionBox = document.getElementById("degreesChoice");
 let classSelectionBox = document.getElementById("classChoice");
@@ -17,6 +19,7 @@ let dialogClassNameBox = document.getElementById("dialogClassNameDiv");
 let dialogClassCodeBox = document.getElementById("dialogClassCodeDiv");
 let dialogClassCreditsBox = document.getElementById("dialogClassCreditsDiv");
 let dialogClassDescriptionBox = document.getElementById("dialogDescriptionDiv");
+
 
 
 let classBoxes;
