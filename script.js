@@ -8,6 +8,7 @@ let classesList = document.getElementById("classes");
 let tableColumns = document.getElementsByClassName("row");
 let semesterOneRow = document.getElementsByClassName("row")[1];
 let semesterTops = document.getElementsByClassName("semesterTop");
+let semesterSelect = document.getElementById("semesterSelect");
 
 let degreeSearchButton = document.getElementById("degreeButton");
 let classSearchButton = document.getElementById("classButton");
@@ -19,6 +20,7 @@ let dialogClassNameBox = document.getElementById("dialogClassNameDiv");
 let dialogClassCodeBox = document.getElementById("dialogClassCodeDiv");
 let dialogClassCreditsBox = document.getElementById("dialogClassCreditsDiv");
 let dialogClassDescriptionBox = document.getElementById("dialogDescriptionDiv");
+
 
 
 
@@ -46,7 +48,7 @@ classSearchButton.addEventListener("click", () => {
     }
 
     classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
-    createClassBox(classQueryCode, 1)
+    createClassBox(classQueryCode, semesterSelect.value);
 });
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
 for (let i = 0; i < tableColumns.length; i++) {
@@ -478,6 +480,10 @@ function updatePreReqs() {
 }
 
 function moreInformation(type, classInfo) {
+
+    Swal.fire ({
+
+    });
     moreInfoBox.style.opacity = 1;
     let concatDesc = "";
     if (type === "normal") {
@@ -498,6 +504,6 @@ function moreInformation(type, classInfo) {
         dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
         dialogClassDescriptionBox.textContent = `You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.`;
     }
-moreInfoBox.showModal();
+
 
 }
