@@ -1,5 +1,6 @@
-import { Analytics } from "@vercel/analytics/react";
+import { inject } from "@vercel/analytics"
 
+inject();
 let testDiv = document.getElementById("testDiv");
 let degreeSelectionBox = document.getElementById("degreesChoice");
 let classSelectionBox = document.getElementById("classChoice");
