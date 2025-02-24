@@ -46,9 +46,10 @@ classSearchButton.addEventListener("click", () => {
             break;
         }
     }
-    classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, 1));
-    //classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
-    createClassBox(classQueryCode, semesterSelect.value);
+
+    classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
+    //createClassBox(classQueryCode, semesterSelect.value);
+    createClassBox(classQueryCode, 1);
 });
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
 for (let i = 0; i < tableColumns.length; i++) {
