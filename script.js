@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2'
+//import Swal from 'sweetalert2'
 
 let testDiv = document.getElementById("testDiv");
 let degreeSelectionBox = document.getElementById("degreesChoice");
@@ -46,8 +46,8 @@ classSearchButton.addEventListener("click", () => {
             break;
         }
     }
-
-    classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
+    classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, 1));
+    //classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
     createClassBox(classQueryCode, semesterSelect.value);
 });
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
@@ -112,6 +112,7 @@ function loadSearches(data, searchBar) {
 }
 
 function createClassBox(classQuery, semester) {
+    //Make transfer credit semester option support
     let classDataEntry;
     let foundClass = false;
 
@@ -481,9 +482,9 @@ function updatePreReqs() {
 
 function moreInformation(type, classInfo) {
 
-    Swal.fire ({
+    /*Swal.fire ({
 
-    });
+    });*/
     moreInfoBox.style.opacity = 1;
     let concatDesc = "";
     if (type === "normal") {
@@ -504,6 +505,6 @@ function moreInformation(type, classInfo) {
         dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
         dialogClassDescriptionBox.textContent = `You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.`;
     }
-
+    moreInfoBox.showModal();
 
 }
