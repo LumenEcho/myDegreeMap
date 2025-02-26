@@ -2,6 +2,7 @@
 # To Do
 
 add more majors (not urgent)  
+1. fix course code on electives for csc majors
 1. "delete course" icon in each box
 2. "undo" and "redo" buttons above map?
 3. remove "total completed credits" or fix it and rename to "total credits" or similar
