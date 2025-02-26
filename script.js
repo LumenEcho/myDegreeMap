@@ -48,8 +48,8 @@ classSearchButton.addEventListener("click", () => {
     }
 
     classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
-    //createClassBox(classQueryCode, semesterSelect.value);
-    createClassBox(classQueryCode, 1);
+    createClassBox(classQueryCode, semesterSelect.value);
+    semesterSelect.value = "";
     classSelectionBox.value = "";
 });
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
