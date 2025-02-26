@@ -50,6 +50,7 @@ classSearchButton.addEventListener("click", () => {
     classQueryCode = classQueryCode + (classSelectionBox.value.substring(0, classQueryStopIndex));
     //createClassBox(classQueryCode, semesterSelect.value);
     createClassBox(classQueryCode, 1);
+    classSelectionBox.value = "";
 });
 degreeSearchButton.addEventListener("click", () => createDegreeTemplate(degreeSelectionBox.value));
 for (let i = 0; i < tableColumns.length; i++) {
@@ -420,8 +421,9 @@ async function createDegreeTemplate(degreeQuery) {
         }
         
     }
-   updateCreditsTotal();
-   updatePreReqs();
+    updateCreditsTotal();
+    updatePreReqs();
+    degreeSelectionBox.value = "";
 }
 
 function isCourseCompleted(checkbox, classBox) {
