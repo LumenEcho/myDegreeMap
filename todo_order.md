@@ -27,3 +27,7 @@ add more majors (not urgent)
 11. enable export and import of plan as json
 12. alternative ways to get credit (e.g., MATH2610 for CSC2700, MATH4470 for MATH3470)
 13. enable select when each semester is (fall 25, spring 26, summer 26, etc.), turn course yellow if not offered then
+
+
+FOR VINCENT: Add transfer credit feature in class selector
+Make saving your degree map
