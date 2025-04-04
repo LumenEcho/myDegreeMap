@@ -26,9 +26,6 @@ let completedColor = "#48D607";
 let prereqsmetColor = "#bd8008";
 let prereqsnotmetColor = "#e7d2fa";
 
-
-
-
 let classBoxes;
 
 let classData;
@@ -177,6 +174,12 @@ function createClassBox(classQuery, semester) {
     checkBoxButtonDiv.className = "courseCheckbox";
     checkBoxButtonDiv.append(courseCheckbox);
     courseCheckbox.addEventListener("click", () => isCourseCompleted(courseCheckbox, classBox));
+
+    //Auto-complete courses added to transfer credits
+    if (semester === 0) {
+        courseCheckbox.checked = true;
+        isCourseCompleted(courseCheckbox, classBox);
+    }
 
     //Bottom of box
     let boxText = document.createElement("div");
