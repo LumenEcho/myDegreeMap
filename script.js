@@ -21,6 +21,11 @@ let dialogClassCodeBox = document.getElementById("dialogClassCodeDiv");
 let dialogClassCreditsBox = document.getElementById("dialogClassCreditsDiv");
 let dialogClassDescriptionBox = document.getElementById("dialogDescriptionDiv");
 
+//Color variables
+let completedColor = "#48D607";
+let prereqsmetColor = "#bd8008";
+let prereqsnotmetColor = "#e7d2fa";
+
 
 
 
@@ -434,11 +439,11 @@ async function createDegreeTemplate(degreeQuery) {
 
 function isCourseCompleted(checkbox, classBox) {
     if (checkbox.checked === true) {
-       classBox.style.backgroundColor = "#48D607";
+       classBox.style.backgroundColor = completedColor;
        classBox.completedClass = true;
     }
     else {
-        classBox.style.backgroundColor = "#e7d2fa";
+        classBox.style.backgroundColor = prereqsnotmetColor;
         classBox.completedClass = false;
     }
 
@@ -463,7 +468,7 @@ function updatePreReqs() {
         completedClasses = 0;
         if (classesObjectsArray[i].completedClass === false) {
             if(classesObjectsArray[i].prerequisites === 0) {
-                classesObjectsArray[i].style.backgroundColor = "#bd8008";
+                classesObjectsArray[i].style.backgroundColor = prereqsmetColor;
             }
             else {
                 //Iterates through prerequisite array
@@ -478,10 +483,10 @@ function updatePreReqs() {
                     }
                 }
                 if (completedClasses === classesObjectsArray[i].prerequisites.length) {
-                    classesObjectsArray[i].style.backgroundColor = "#bd8008";
+                    classesObjectsArray[i].style.backgroundColor = prereqsmetColor;
                 }
                 else {
-                    classesObjectsArray[i].style.backgroundColor = "#e7d2fa";
+                    classesObjectsArray[i].style.backgroundColor = prereqsnotmetColor;
                 }
             }
         }
