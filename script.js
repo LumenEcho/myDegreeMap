@@ -1,4 +1,3 @@
-//import Swal from 'sweetalert2'
 
 let testDiv = document.getElementById("testDiv");
 let degreeSelectionBox = document.getElementById("degreesChoice");
@@ -111,7 +110,7 @@ function loadSearches(data, searchBar) {
             newOption.value = data[i]["degreeName"];
         }
         else if (searchBar == classesList) {
-            classNameString = "";
+            let classNameString = "";
             classNameString = data[i]["code"].concat(" ", data[i]["name"]);
             newOption.value = classNameString;
         }
@@ -455,7 +454,6 @@ function isCourseCompleted(checkbox, classBox) {
         classBox.completedClass = false;
         totalCompletedCredits -= Number(classBox.classCredits);
     }
-    console.log(totalCompletedCredits);
     totalCreditsBox.textContent = `Total Completed Credits: ${totalCompletedCredits}`;
     updatePreReqs();
 }
