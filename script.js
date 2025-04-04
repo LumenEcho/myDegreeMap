@@ -21,10 +21,14 @@ let dialogClassCodeBox = document.getElementById("dialogClassCodeDiv");
 let dialogClassCreditsBox = document.getElementById("dialogClassCreditsDiv");
 let dialogClassDescriptionBox = document.getElementById("dialogDescriptionDiv");
 
+let totalCreditsBox = document.getElementById("totCompCred");
+
 //Color variables
 let completedColor = "#75d481";
 let prereqsmetColor = "#ffeb5b";
 let prereqsnotmetColor = "#f57e98";
+
+let totalCompletedCredits = 0;
 
 let classBoxes;
 
@@ -175,12 +179,6 @@ function createClassBox(classQuery, semester) {
     checkBoxButtonDiv.append(courseCheckbox);
     courseCheckbox.addEventListener("click", () => isCourseCompleted(courseCheckbox, classBox));
 
-    //Auto-complete courses added to transfer credits
-    if (semester === 0) {
-        courseCheckbox.checked = true;
-        isCourseCompleted(courseCheckbox, classBox);
-    }
-
     //Bottom of box
     let boxText = document.createElement("div");
     classBox.append(boxText);
@@ -203,7 +201,7 @@ function createClassBox(classQuery, semester) {
     creditDiv.className = "creditDiv";
     boxText.append(creditDiv);
     creditDiv.textContent = `Credits: ${classDataEntry["credits"]}`;
-    classBox.classCredits = classDataEntry["credits"];
+    classBox.classCredits = Number(classDataEntry["credits"]);
 
     //More info button in 4th/bottom row
     let moreInfoDiv = document.createElement("div");
@@ -215,6 +213,12 @@ function createClassBox(classQuery, semester) {
     classBox.prerequisites = classDataEntry["prerequisites"];
     //Nullish Coalescing Assignment Operator
     classBox.prerequisites ??= 0;
+
+    //Auto-complete courses added to transfer credits
+    if (semester === 0) {
+        courseCheckbox.checked = true;
+        isCourseCompleted(courseCheckbox, classBox);
+    }
 
     updateCreditsTotal();
 
@@ -444,12 +448,15 @@ function isCourseCompleted(checkbox, classBox) {
     if (checkbox.checked === true) {
        classBox.style.backgroundColor = completedColor;
        classBox.completedClass = true;
+       totalCompletedCredits += Number(classBox.classCredits);
     }
     else {
         classBox.style.backgroundColor = prereqsnotmetColor;
         classBox.completedClass = false;
+        totalCompletedCredits -= Number(classBox.classCredits);
     }
-
+    console.log(totalCompletedCredits);
+    totalCreditsBox.textContent = `Total Completed Credits: ${totalCompletedCredits}`;
     updatePreReqs();
 }
 
