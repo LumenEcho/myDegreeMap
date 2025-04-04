@@ -22,9 +22,9 @@ let dialogClassCreditsBox = document.getElementById("dialogClassCreditsDiv");
 let dialogClassDescriptionBox = document.getElementById("dialogDescriptionDiv");
 
 //Color variables
-let completedColor = "#48D607";
-let prereqsmetColor = "#bd8008";
-let prereqsnotmetColor = "#e7d2fa";
+let completedColor = "#75d481";
+let prereqsmetColor = "#ffeb5b";
+let prereqsnotmetColor = "#f57e98";
 
 
 
