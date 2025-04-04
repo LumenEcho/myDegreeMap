@@ -130,6 +130,12 @@ function createClassBox(classQuery, semester) {
         alert("Please enter a valid class. Selecting one from the the provided list is recommended");
         return 0;
     }
+
+    //Support for transfer credits
+    if (semester === "Transfer Credits") {
+        semester = 0;
+    }
+
     //Overall class box
     let classBox = document.createElement("div");
     classBox.completedClass = false;
