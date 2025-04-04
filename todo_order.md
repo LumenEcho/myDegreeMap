@@ -1,34 +1,36 @@
-
-# To Do
-
-add more majors (not urgent)  
-1. fix course code on electives for csc majors
-1. "delete course" icon in each box
-2. "undo" and "redo" buttons above map?
-3. remove "total completed credits" or fix it and rename to "total credits" or similar
-4. remove indication of completed courses (remove checkbox)
-    * box green if all prerequisites on map BEFORE course and yellow otherwise
-    * transfer credits automatically green
-    * course can be green even if its prereq is yellow
-5. remove color key
-    * "All requirements met" tooltip for green boxes
-    * "Unmet requirements (click More information> )" tooltip for yellow boxes
-6. consolidate majors jsons into one json array?
-7. give "options" and major-specific "electives" a drop-down selector inside box
-8. replace "degree selector" with "add requirement" (or "add goal" or similar) for majors/minors
-    * small scrollable table above map displays all added requirements and if they are met
-        * click a requirement to see why unmet (lack: gen ed, major-specific course, 120 hours, etc.)
-        * add "autocomplete" button on each requirement to replace "degree selector" functionality
-            * ensure "autocomplete" doesn't put a course before its prereq?
-    * create new json array holding majors requirements separate from existing majors json used for autofill
-    * deduplicate gen ed from all majors requirements by making a separate entry for it?
-    * remove non-major-specific "electives" from autocomplete json?
-9. corequisites
-10. enable add (and remove?) semesters
-11. enable export and import of plan as json
-12. alternative ways to get credit (e.g., MATH2610 for CSC2700, MATH4470 for MATH3470)
-13. enable select when each semester is (fall 25, spring 26, summer 26, etc.), turn course yellow if not offered then
+Must do [FINISH BEFORE USER STORIES]
+- Deleting classes (trash can)
+- Fix pop-ups (make sure they actually disappear) (SWEET ALERT)
+- Select Specific Choice classes (for electives)
 
 
-FOR VINCENT: Add transfer credit feature in class selector
-Make saving your degree map
+Should do
+- Tutorial/Explanation of website
+- Website Redesign (specifically class boxes and others)
+- Working Corequisites
+- Enable add/remove semesters
+- Enable Export and Import of degree map as JSON file
+- Science Sequences works correctly
+- Add a Backend
+- Advanced search (subjects)
+- Could Do
+- Undo and Redo Buttons
+- Date for semester table / when certain classes can be taken
+- Sum how many credits are on map and make total credits completed out of total
+
+Won’t Do
+- Consolidate major json into one json array (maybe can do folder instead)
+
+IDEAS
+- Add a google form link to the website
+- Make a google form that we can get feedback from
+
+STEP 2: User Stories/advertise Prototype
+- Connections
+- SDC Discord
+- RUC Flyer advertisement
+- Google form
+- Counselors/Advisors/Professors
+
+STEP 3: Talk to Burchfield about Better Data
+- Prerequisites and Recommended course plan
