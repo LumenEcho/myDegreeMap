@@ -33,7 +33,7 @@ body{
 #topOfSite{
     display:flex;
     overflow-x: auto;
-
+    align-items: center;
 }
 
 #colorKey{
