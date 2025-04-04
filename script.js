@@ -503,17 +503,17 @@ function updatePreReqs() {
 }
 
 function moreInformation(type, classInfo) {
-
-    /*Swal.fire ({
-
-    });*/
     moreInfoBox.style.opacity = 1;
     let concatDesc = "";
     if (type === "normal") {
-        dialogClassNameBox.textContent = classInfo.schoolClassName;
+        /*dialogClassNameBox.textContent = classInfo.schoolClassName;
         dialogClassCodeBox.textContent = classInfo.classCode;
         dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
-        dialogClassDescriptionBox.textContent = classInfo.classDescription;
+        dialogClassDescriptionBox.textContent = classInfo.classDescription;*/
+        Swal.fire({
+            titleText: `${classInfo.classCode}: ${classInfo.schoolClassName}`,
+            html: `<p>Credits: ${classInfo.classCredits}</p><p>Class Description: ${classInfo.classDescription}</p>`
+        });
     }
     else if (type === "options") {
         dialogClassNameBox.textContent = classInfo.classOptionsName;
@@ -527,6 +527,6 @@ function moreInformation(type, classInfo) {
         dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
         dialogClassDescriptionBox.textContent = `You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.`;
     }
-    moreInfoBox.showModal();
+    //moreInfoBox.showModal();
 
 }
