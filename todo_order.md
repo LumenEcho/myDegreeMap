@@ -1,6 +1,6 @@
 Must do [FINISH BEFORE USER STORIES]
 - Deleting classes (trash can)
-- Fix pop-ups (make sure they actually disappear) (SWEET ALERT)
+- Fix pop-ups (make sure they actually disappear) (SWEET ALERT) **ALL WORK BUT ELECTIVES, SCIENCE SEQUENCES, AND COMMUNICATIONS**
 - Select Specific Choice classes (for electives)
 
 
