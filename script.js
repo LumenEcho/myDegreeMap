@@ -506,10 +506,6 @@ function moreInformation(type, classInfo) {
     moreInfoBox.style.opacity = 1;
     let concatDesc = "";
     if (type === "normal") {
-        /*dialogClassNameBox.textContent = classInfo.schoolClassName;
-        dialogClassCodeBox.textContent = classInfo.classCode;
-        dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
-        dialogClassDescriptionBox.textContent = classInfo.classDescription;*/
         Swal.fire({
             titleText: `${classInfo.classCode}: ${classInfo.schoolClassName}`,
             html: `<p>Credits: ${classInfo.classCredits}</p><p>Class Description: ${classInfo.classDescription}</p>`
