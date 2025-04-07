@@ -174,14 +174,9 @@ label{
 /*Sweet Alert 2 CSS*/
   
   .customTitle {
-    color: #2a9d8f; /* Teal title */
-    font-size: 1.5rem;
     text-align: center; /* Center title */
   }
 
   .customPopUp{
-    border-radius: 10px;
-    font-family: 'Arial', sans-serif;
     background-color: #f8f8f8;
-    color: #222;
   }
