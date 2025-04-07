@@ -503,7 +503,6 @@ function updatePreReqs() {
 }
 
 function moreInformation(type, classInfo) {
-    moreInfoBox.style.opacity = 1;
     let concatDesc = "";
     if (type === "normal") {
         Swal.fire({
@@ -523,6 +522,5 @@ function moreInformation(type, classInfo) {
         dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
         dialogClassDescriptionBox.textContent = `You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.`;
     }
-    //moreInfoBox.showModal();
 
 }
