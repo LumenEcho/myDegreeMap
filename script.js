@@ -511,11 +511,35 @@ function moreInformation(type, classInfo) {
         });
     }
     else if (type === "options") {
+        /*
         dialogClassNameBox.textContent = classInfo.classOptionsName;
         dialogClassCodeBox.textContent = "You may choose any of the following classes";
         dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
         dialogClassDescriptionBox.textContent = classInfo.classOptions.toString();
-
+        */
+        Swal.fire({
+            titleText: `You may choose any of the following classes`,
+            html: `<p>Credits: ${classInfo.classCredits}</p><p>Classes List: ${classInfo.classOptions.toString()}</p>`,
+            customClass: {
+                container: '...',
+                popup: 'customPopUp',
+                title: 'customTitle',
+                closeButton: '...',
+                icon: '...',
+                image: '...',
+                htmlContainer: '...',
+                input: '...',
+                inputLabel: '...',
+                validationMessage: '...',
+                actions: '...',
+                confirmButton: '...',
+                denyButton: '...',
+                cancelButton: '...',
+                loader: '...',
+                footer: '....',
+                timerProgressBar: '....',
+              }
+        });
     }
     else {
         dialogClassNameBox.textContent = "Free Elective";
