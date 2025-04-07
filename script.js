@@ -507,44 +507,32 @@ function moreInformation(type, classInfo) {
     if (type === "normal") {
         Swal.fire({
             titleText: `${classInfo.classCode}: ${classInfo.schoolClassName}`,
-            html: `<p>Credits: ${classInfo.classCredits}</p><p>Class Description: ${classInfo.classDescription}</p>`
+            html: `<p>Credits: ${classInfo.classCredits}</p><p>Class Description: ${classInfo.classDescription}</p>`,
+            customClass: {
+                popup: 'customPopUp',
+                title: 'customTitle',
+            }
         });
     }
     else if (type === "options") {
-        /*
-        dialogClassNameBox.textContent = classInfo.classOptionsName;
-        dialogClassCodeBox.textContent = "You may choose any of the following classes";
-        dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
-        dialogClassDescriptionBox.textContent = classInfo.classOptions.toString();
-        */
         Swal.fire({
             titleText: `You may choose any of the following classes`,
             html: `<p>Credits: ${classInfo.classCredits}</p><p>Classes List: ${classInfo.classOptions.toString()}</p>`,
             customClass: {
-                container: '...',
                 popup: 'customPopUp',
                 title: 'customTitle',
-                closeButton: '...',
-                icon: '...',
-                image: '...',
-                htmlContainer: '...',
-                input: '...',
-                inputLabel: '...',
-                validationMessage: '...',
-                actions: '...',
-                confirmButton: '...',
-                denyButton: '...',
-                cancelButton: '...',
-                loader: '...',
-                footer: '....',
-                timerProgressBar: '....',
-              }
+            }
         });
     }
     else {
-        dialogClassNameBox.textContent = "Free Elective";
-        dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
-        dialogClassDescriptionBox.textContent = `You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.`;
+        Swal.fire({
+            titleText: `Free Elective`,
+            html: `<p>You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.</p>`,
+            customClass: {
+                popup: 'customPopUp',
+                title: 'customTitle',
+            }
+        });
     }
 
 }
