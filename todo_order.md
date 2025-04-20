@@ -17,6 +17,7 @@ Should do
 - Undo and Redo Buttons
 - Date for semester table / when certain classes can be taken
 - Sum how many credits are on map and make total credits completed out of total
+- Associates/Bachelors/Masters degree options?
 
 Won’t Do
 - Consolidate major json into one json array (maybe can do folder instead)
