@@ -511,7 +511,6 @@ function moreInformation(type, classInfo) {
         Swal.fire({
             titleText: `${classInfo.classCode}: ${classInfo.schoolClassName}`,
             html: `<p>Credits: ${classInfo.classCredits}</p><p>Class Description: ${classInfo.classDescription}</p>`,
-<<<<<<< HEAD
             showCancelButton: true,
             cancelButtonText: "Delete Class",
             cancelButtonColor: "red"
@@ -524,14 +523,6 @@ function moreInformation(type, classInfo) {
         classDeleteButton.addEventListener("click", () => {
             deleteClass(classInfo);
         });*/
-
-=======
-            customClass: {
-                popup: 'customPopUp',
-                title: 'customTitle',
-            }
-        });
->>>>>>> b8db19f0ac1833a4d8f120c705466a611e2ce376
     }
     else if (type === "options") {
         Swal.fire({
