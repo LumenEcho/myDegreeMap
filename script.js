@@ -36,6 +36,7 @@ let degreeData;
 let degreeJSON;
 let classBoxIdCounter = 0;
 
+//Names array actually contains the class codes
 let classesNamesArray = [];
 let classesObjectsArray = [];
 
@@ -502,21 +503,29 @@ function updatePreReqs() {
     }
 }
 
+//Shows the more information box
 function moreInformation(type, classInfo) {
+    //classInfo is a local copy of classbox
     let concatDesc = "";
     if (type === "normal") {
         Swal.fire({
             titleText: `${classInfo.classCode}: ${classInfo.schoolClassName}`,
-            html: `<p>Credits: ${classInfo.classCredits}</p><p>Class Description: ${classInfo.classDescription}</p>`
-        });
+            html: `<p>Credits: ${classInfo.classCredits}</p><p>Class Description: ${classInfo.classDescription}</p>`,
+            showCancelButton: true,
+            cancelButtonText: "Delete Class",
+            cancelButtonColor: "red"
+        }).then((result) => {
+            if (result.isDismissed) {
+                deleteClass(classInfo);
+            }
+        })
+        /*let classDeleteButton = document.getElementById("deleteClassButton");
+        classDeleteButton.addEventListener("click", () => {
+            deleteClass(classInfo);
+        });*/
+
     }
     else if (type === "options") {
-        /*
-        dialogClassNameBox.textContent = classInfo.classOptionsName;
-        dialogClassCodeBox.textContent = "You may choose any of the following classes";
-        dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
-        dialogClassDescriptionBox.textContent = classInfo.classOptions.toString();
-        */
         Swal.fire({
             titleText: `You may choose any of the following classes`,
             html: `<p>Credits: ${classInfo.classCredits}</p><p>Classes List: ${classInfo.classOptions.toString()}</p>`,
@@ -547,4 +556,29 @@ function moreInformation(type, classInfo) {
         dialogClassDescriptionBox.textContent = `You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.`;
     }
 
+}
+
+//Function to delete a class
+function deleteClass(classBox) {
+    let classBoxes = Array.from(document.getElementsByClassName("box"));
+    //Grabbing the checkbox
+    let classCheckbox = classBox.childNodes[0].childNodes[0].childNodes[0].checked = false;
+    console.log(classBox.classCode);
+    console.log(classesObjectsArray);
+    console.log(classesNamesArray);
+    //Delete from objects array
+    classesObjectsArray = [];
+    console.log(classBoxes);
+    for (let i = 0; i < classBoxes.length; i++) {
+        classesObjectsArray.push(classBox[i]);
+    }
+    //Delete from class names array
+    for (let i = 0; i < classesNamesArray.length; i++) {
+        if (classBox.classCode === classesNamesArray[i]) {
+            classesNamesArray.splice(i, 1);
+        }
+    }
+    isCourseCompleted(classCheckbox, classBox);
+    classBox.remove();
+    updateCreditsTotal();
 }
