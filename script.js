@@ -511,6 +511,7 @@ function moreInformation(type, classInfo) {
         Swal.fire({
             titleText: `${classInfo.classCode}: ${classInfo.schoolClassName}`,
             html: `<p>Credits: ${classInfo.classCredits}</p><p>Class Description: ${classInfo.classDescription}</p>`,
+<<<<<<< HEAD
             showCancelButton: true,
             cancelButtonText: "Delete Class",
             cancelButtonColor: "red"
@@ -524,36 +525,33 @@ function moreInformation(type, classInfo) {
             deleteClass(classInfo);
         });*/
 
+=======
+            customClass: {
+                popup: 'customPopUp',
+                title: 'customTitle',
+            }
+        });
+>>>>>>> b8db19f0ac1833a4d8f120c705466a611e2ce376
     }
     else if (type === "options") {
         Swal.fire({
             titleText: `You may choose any of the following classes`,
             html: `<p>Credits: ${classInfo.classCredits}</p><p>Classes List: ${classInfo.classOptions.toString()}</p>`,
             customClass: {
-                container: '...',
                 popup: 'customPopUp',
                 title: 'customTitle',
-                closeButton: '...',
-                icon: '...',
-                image: '...',
-                htmlContainer: '...',
-                input: '...',
-                inputLabel: '...',
-                validationMessage: '...',
-                actions: '...',
-                confirmButton: '...',
-                denyButton: '...',
-                cancelButton: '...',
-                loader: '...',
-                footer: '....',
-                timerProgressBar: '....',
-              }
+            }
         });
     }
     else {
-        dialogClassNameBox.textContent = "Free Elective";
-        dialogClassCreditsBox.textContent = `Credits: ${classInfo.classCredits}`;
-        dialogClassDescriptionBox.textContent = `You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.`;
+        Swal.fire({
+            titleText: `Free Elective`,
+            html: `<p>You may pick any classes as long as they total up to at least ${classInfo.classCredits} credits.</p>`,
+            customClass: {
+                popup: 'customPopUp',
+                title: 'customTitle',
+            }
+        });
     }
 
 }

@@ -1,3 +1,5 @@
+/* Below is all the css for the main body of the Degree Map*/
+
 body{
     margin:0;
     font-family: sans-serif;
@@ -90,7 +92,7 @@ label{
     font-size: 70%;
 }
 
-.boxCheck{ /*changed from .boxLeftWrap*/
+.boxCheck{
     display:flex;
     flex-direction: column;
     flex-grow: 3;
@@ -114,8 +116,7 @@ label{
     height: 25%;
 }
 
-.boxText{ /*Changed from .boxRightWrap*/
-    /*Needs to be right of .boxCheck*/
+.boxText{ 
     display: flex;
     flex-direction: column;
 }
@@ -124,64 +125,12 @@ label{
     display: flex;
 }
 
-::backdrop {
-    background-color: white;
-    opacity: .75;
-}
-
-#dialogBox {
-    opacity: 0;
-    display: hidden;
-    height: 90vh;
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    background-color: lightgray;
-}
-
-#topCloseBox {
-    height: 10vh;
-}
-
-#dialogClassNameDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-}
-
-#dialogClassCodeDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-}
-
-#dialogClassCreditsDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-}
-
-#dialogDescriptionDiv {
-    display: flex;
-    justify-content: center;
-    height: 50vh;
-    overflow-wrap: normal;
-}
-
 /*Sweet Alert 2 CSS*/
   
-  .customTitle {
-    color: #2a9d8f; /* Teal title */
-    font-size: 1.5rem;
+.customTitle {
     text-align: center; /* Center title */
-  }
+}
 
-  .customPopUp{
-    border-radius: 10px;
-    font-family: 'Arial', sans-serif;
+.customPopUp{
     background-color: #f8f8f8;
-    color: #222;
-  }
+}
